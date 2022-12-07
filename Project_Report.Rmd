@@ -20,13 +20,6 @@ We were inspired by the owrk done by a previous group but they did not explore t
 
 ### New Questions Identified During Analysis
 
-## **Data**
-
-### Data Sources
-
-### Data Cleaning
-
-
 ## **Additional Analyses**
 
 ## **Discussion**

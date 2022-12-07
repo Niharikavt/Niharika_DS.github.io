@@ -5,6 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Data"
+      href: Data.html
     - text: "Exploratory Analysis"
       href: Exploratory_Analysis.html
     - text: "Project Report"
