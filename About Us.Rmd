@@ -1,0 +1,14 @@
+---
+title: "About Us"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+
+---
+
+Brittany Shea 
+Erfan Faridmoayer
+Niharika Telrandhe
+Pooja Desai
+Sabah Usmani
