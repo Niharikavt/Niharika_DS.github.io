@@ -1,0 +1,17 @@
+---
+title: "COVID-19 Vaccination & Booster Trends in NYC"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Motivation
+
+
+## What You'll Find In This Website
+
+- Analyses
+- A closer look at the factors affecting vaccination and booster disribution across NYC
+- A full report detailing our process ()
+- The GitHub repository which contains our raw code and anlayses ()
