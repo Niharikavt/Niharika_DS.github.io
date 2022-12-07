@@ -1,13 +1,28 @@
 ---
 title: "COVID-19 Vaccination & Booster Trends in NYC"
+author: Brittany Shea, Erfan Faridmoayer, Pooja Desai, Niharika Telrandhe, Sabah Usmani"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
+<style type="text/css">
+h2.author{
+  font-size: 10px;
+}
+</style>
+
+<space>
+      
+<center>
+
+<img src="coronavirus.jpg">
+
+</center>
 
 ## Motivation
 
+The recent availability of bivalent boosters for all blah blah blah
 
 ## What You'll Find In This Website
 

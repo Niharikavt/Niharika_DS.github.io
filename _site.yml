@@ -13,4 +13,4 @@ navbar:
       href: Project_Report.html
 output:
   html_document:
-    theme: cerulean
+    theme: flatly
