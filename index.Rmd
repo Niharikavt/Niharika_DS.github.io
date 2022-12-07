@@ -1,6 +1,5 @@
 ---
 title: "COVID-19 Vaccination & Booster Trends in NYC"
-author: Brittany Shea, Erfan Faridmoayer, Pooja Desai, Niharika Telrandhe, Sabah Usmani"
 output: 
   html_document:
     toc: true
@@ -14,11 +13,11 @@ h2.author{
 
 <space>
       
-<center>
-
-<img src="coronavirus.jpg">
-
 </center>
+
+<img src="images/coronavirus.jpg">
+
+#### By Brittany Shea | Erfan Faridmoayer| Niharika Telrandhe| Pooja Desai | Sabah Usmani
 
 ## Motivation
 
@@ -29,4 +28,9 @@ The recent availability of bivalent boosters for all blah blah blah
 - Analyses
 - A closer look at the factors affecting vaccination and booster disribution across NYC
 - A full report detailing our process ()
-- The GitHub repository which contains our raw code and anlayses ()
+- A screencast walking you through this website ()
+- The GitHub repository which contains our raw code and analyses ()
+- Link to finding vaccination sites/ booster sites near you ()
+
+Visualizations and analyses performed using R (v4.0.3) and RStudio (v1.3.1073).
+Additional interactivity added using plotly (v4.13.0) and Shiny (v1.5.0).

@@ -1,26 +1,32 @@
 ---
-title: "Project Report "
+title: "Project Report for P8105 "
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-## Project Motivation
+## **Project Motivation**
+The recent booster availability
 
-## Initial Questions
+
+### Related Work
+
+We were inspired by the owrk done by a previous group but they did not explore the vaccination and booster distribution blah blah blah
+
+## **Initial Questions**
 
 ### Evolution of Analytic Questions
 
 ### New Questions Identified During Analysis
 
-## Data
+## **Data**
 
 ### Data Sources
 
 ### Data Cleaning
 
-## Exploratory Analysis
+## **Exploratory Analysis**
 
 ### Dashboard
 
@@ -28,10 +34,16 @@ output:
 
 ## General Difficulties
 
-## Additional Analyses
+## **Additional Analyses**
 
-## Discussion
+## **Discussion**
 
 ### Key Findings
+
+### Were the Findings as Expected?
+
+### What insights into the data did we make?
+
+### Suggestions/Recommendations for further Research and Analysis of this topic.
 
 
