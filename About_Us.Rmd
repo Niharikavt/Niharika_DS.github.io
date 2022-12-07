@@ -8,7 +8,12 @@ output:
 ---
 
 * Brittany Shea 
+
+
 * Erfan Faridmoayer
+
 * Niharika Telrandhe
+
 * Pooja Desai
+
 * Sabah Usmani
