@@ -1,0 +1,15 @@
+---
+title: "Exploratory Analysis"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+## **Exploratory Analysis**
+
+### Dashboard
+
+### Mapping
+
+## General Difficulties
+
