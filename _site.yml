@@ -1,4 +1,4 @@
-name: "Yay internet!"
+name: "COVID-19 VAccination & Booster Trends in NYC"
 output_dir: "."
 navbar:
   title: "Home"
