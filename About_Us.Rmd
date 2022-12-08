@@ -7,13 +7,12 @@ output:
 
 ---
 
-* Brittany Shea 
+* [Brittany Shea](https://brittshea.github.io)
 
+* [Erfan Faridmoayer](https://erfanfarid.github.io)
 
-* Erfan Faridmoayer
+* [Niharika Telrandhe](https://niharikavt.github.io/)
 
-* Niharika Telrandhe
+* [Pooja Desai](https://www.poojamdesai.com)
 
-* Pooja Desai
-
-* Sabah Usmani
+* [Sabah Usmani]
