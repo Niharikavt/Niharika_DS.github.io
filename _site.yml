@@ -3,16 +3,14 @@ output_dir: "."
 navbar:
   title: "Home"
   right:
-    - text: "About Us"
-      href: About_Us.html
     - text: "Data"
       href: Data.html
     - text: "Exploratory Analysis"
       href: Exploratory_Analysis.html
     - text: "Project Report"
       href: Project_Report.html
-    - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+    - icon: fa-brands fa-youtube
+      href: 
     - icon: fa-github fa-lg
       href: https://github.com/brittshea/p8105_finalproject_fall2022
 output:
