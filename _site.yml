@@ -7,6 +7,8 @@ navbar:
       href: Data.html
     - text: "Exploratory Analysis"
       href: Exploratory_Analysis.html
+    - text: "Mapping"
+      href: Mapping.html
     - text: "Discussion"
       href: Discussion.html
     - text: "Project Report"
