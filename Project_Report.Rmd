@@ -1,10 +1,11 @@
 ---
-title: "Project Report for P8105 "
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
+# **Project Report for P8105**
+#### *By Brittany Shea | Erfan Faridmoayer| Niharika Telrandhe| Pooja Desai | Sabah Usmani*
 
 ## **Project Motivation**
 
@@ -21,26 +22,30 @@ COVID-19 vaccination and booster distribution by zip codes and boroughs in NYC a
 4. Disparities in vaccine distribution with respect to geographic location, poverty status, education attainment and median income.
 5. Sociodemographic trends in individuals receiving complete vaccinations and boosters.
 
-### Related Work
+### *Related Work*
 
-We were inspired by the owrk done by a previous group but they did not explore the vaccination and booster distribution blah blah blah
+The `ggplot function` in R combined with the [New York City COVID-19 geographic mapping](https://www.nyc.gov/site/doh/covid/covid-19-data.page) found here was the inspiration for us to further evaluate the trends in vaccine and booster distribution across New York City based on the available zip codes.
 
 ## **Initial Questions**
+Q1. What socio-demographic and geographic factors make a neighborhood vulnerable with respect to COVID-19 vaccination and boosters.
+Q2. How many people were vaccinated - partially, fully and with boosters ?
+Q3. How education attainment, poverty status, median income was affecting vaccination and booster distribution in NYC.
+Q4.Vaccination and booster distribution with respect to zipcodes in NYC.
 
-### Evolution of Analytic Questions
+### *Evolution of Analytic Questions*
 
-### New Questions Identified During Analysis
+### *New Questions Identified During Analysis*
 
 ## **Additional Analyses**
 
 ## **Discussion**
 
-### Key Findings
+### *Key Findings*
 
-### Were the Findings as Expected?
+### *Were the Findings as Expected?*
 
-### What insights into the data did we make?
+### *What insights into the data did we make?*
 
-### Suggestions/Recommendations for further Research and Analysis of this topic.
+### *Suggestions/Recommendations for further Research and Analysis of this topic.*
 
 

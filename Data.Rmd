@@ -1,13 +1,22 @@
 ---
-title: "Data"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
+## **Data Sources**
+We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas.
 
-## **Data**
+Details about MODZTA can be found [here](https://nychealth.github.io/covid-maps/modzcta-geo/about.html) and the [GitHub Repository](https://github.com/nychealth/coronavirus-data/tree/master/Geography-resources).
 
-### Data Sources
+Along with this we used four datasets from [US Census Bureau](https://data.census.gov) to construct our analysis of socioeconomic and demographic variables.We used the New York State census data and merged them using the NYC MODZTA.
 
-### Data Cleaning
+1. [Total population](https://data.census.gov/table?q=P1&tid=DECENNIALPL2020.P1)
+
+2. [Education Attainment](https://data.census.gov/table?q=S1501&tid=ACSST1Y2021.S1501)
+
+3. [Poverty Status in the past 12 months](https://data.census.gov/table?q=S1701)
+
+4. [Median Income in the past 12 months](https://data.census.gov/table?q=S1903)
+
+## **Data Cleaning**
