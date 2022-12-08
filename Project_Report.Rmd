@@ -28,15 +28,65 @@ The `ggplot function` in R combined with the [New York City COVID-19 geographic 
 
 ## **Initial Questions**
 Q1. What socio-demographic and geographic factors make a neighborhood vulnerable with respect to COVID-19 vaccination and boosters.
-Q2. How many people were vaccinated - partially, fully and with boosters ?
+
+Q2. How many people were vaccinated - partially, fully and with boosters?
+
 Q3. How education attainment, poverty status, median income was affecting vaccination and booster distribution in NYC.
-Q4.Vaccination and booster distribution with respect to zipcodes in NYC.
+
+Q4.Vaccination and booster distribution with respect to zip codes in NYC.
+
+### *Roadblocks & General Difficulties*
+
+</center>
+
+<img src="images/roadblock.jpg">
+
+#### **Roadblock 1.** Zip codes vary! We realized zip codes are not the best or most reliable way to define boundaries and that they were available in a variety of formats. Not all datasets had the MODZTAs available.
+#### **Trouble-shooting** We went ahead and used the modified zipcode tabulated areas of MODZTAs and you can find more information about it linked above.
+
+
+#### **Roadblock 2.** We were unable to analyze booster uptake and distributions before 9th March 2022. The NYC COVID data only added a column called `count_additional` which was a count of everyone who received a completed FDA-approved primary series plus additional boosters for people aged 18+ in NYC.The data did not clearly record the initial booster rollouts for priority population before it was approved for all above 18.
+#### **Trouble-shooting** We restricted our vaccination and booster data from 9th March 2022 onwards as well as poverty status and median income in the past 12 months only to keep our analysis fresh and updated.
 
 ### *Evolution of Analytic Questions*
+Q1. How does education attainment, poverty status in the past 12 months and median income in the past 12 months affect the vaccine and booster distribution in NYC by MODTZAs and boroughs.
 
-### *New Questions Identified During Analysis*
+Q2. How many people were vaccinated - partially, fully and with boosters post 9th March 2022 by boroughs and zipcodes?
 
-## **Additional Analyses**
+Q3. The vaccination and booster status of the proportion of individuals aged 18+ who were below the poverty level by boroughs.
+
+Q4. How did the recent booster rollout look in NYC - the big picture.
+
+## **Data** 
+
+### *Data Sources*
+We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas.
+
+Details about MODZTA can be found [here](https://nychealth.github.io/covid-maps/modzcta-geo/about.html) and the [GitHub Repository](https://github.com/nychealth/coronavirus-data/tree/master/Geography-resources).
+
+Along with this we used four datasets from [US Census Bureau](https://data.census.gov) to construct our analysis of socioeconomic and demographic variables.We used the New York State census data and merged them using the NYC MODZTA.
+
+1. [Total population](https://data.census.gov/table?q=P1&tid=DECENNIALPL2020.P1)
+
+2. [Education Attainment](https://data.census.gov/table?q=S1501&tid=ACSST1Y2021.S1501)
+
+3. [Poverty Status in the past 12 months](https://data.census.gov/table?q=S1701)
+
+4. [Median Income in the past 12 months](https://data.census.gov/table?q=S1903)
+
+### *Data Cleaning*
+
+1. MODZTA and Vaccination Coverage 
+2. Total Population
+3. Education Attainment
+4. Poverty Status
+5. Median income
+
+## **Exploratory Data Analysis**
+Visualizations, summaries, and exploratory statistical analyses. Justify the steps you took, and show any major changes to your ideas.
+
+## **Additional Analysis**
+if yo uundertake any statistical analyses
 
 ## **Discussion**
 
