@@ -20,3 +20,9 @@ Along with this we used four datasets from [US Census Bureau](https://data.censu
 4. [Median Income in the past 12 months](https://data.census.gov/table?q=S1903)
 
 ## **Data Cleaning**
+
+1. MODZTA and Vaccination Coverage 
+2. Total Population
+3. Education Attainment
+4. Poverty Status
+5. Median income
