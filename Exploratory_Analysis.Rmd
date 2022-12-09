@@ -35,7 +35,7 @@ scale_fill_discrete = scale_fill_viridis_d
 merged_vaccine_data = read_csv(file="./data/merged_vaccine_data.csv")
 ```
 
-### Fully vaccinated:
+### Fully vaccinated individuals by zipcode and boroughs:
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
@@ -55,11 +55,7 @@ ggplot(merged_vaccine_data) +
   theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
-This plot shows the proportion of individuals who are fully vaccinated as of March 9th 2022. We would have expected 
-
-
-
-Additional/Booster vaccinated:
+### Additional/Booster vaccinated individuals by zipcode and boroughs:
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
@@ -78,17 +74,62 @@ ggplot(merged_vaccine_data) +
   ) + theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
+# **2. The Education Attainment in NYC by Vaccination Status and Borough**
 
+```{r, include=FALSE}
+cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
+```
 
+### Fully Vaccinated Inidividuals by Education Status and Age
 
+``` {r}
+ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
+  geom_point(shape = "circle", size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = "Proportion of Individuals by Education Status",
+    y = "Proportion of Individuals Fully Vaccinated ",
+    title = "Fully Vaccinated Individuals by Education Status and Age",
+    color = "Education Status"
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(age))
+```
 
+### Fully Vaccinated Individuals by Education Status and Boroughs
+```{r}
+ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = booster_prop, colour = borough) +
+  geom_point(shape = "circle", size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = "Education Status",
+    y = "Proportion of individuals receiving boosters",
+    title = "Additional/Boosted individuals by Education Status and Borough",
+    color = "Boroughs"
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(edu))
 
+```
 
+### Additional/Boosted Inidividuals by Education Status and Boroughs
+```{r}
+ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = booster_prop, colour = borough) +
+  geom_point(shape = "circle", size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = "Education Status",
+    y = "Proportion of individuals receiving boosters",
+    title = "Additional/Boosted individuals by Education Status and Borough",
+    color = "Boroughs"
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(edu))
 
-
-
-
-
+```
 
 
 

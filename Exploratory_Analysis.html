@@ -378,13 +378,76 @@ div.tocify {
 class="section level1">
 <h1><strong>1. The vaccination coverage in NYC by Zipcode and
 Borough</strong></h1>
-<div id="fully-vaccinated" class="section level3">
-<h3>Fully vaccinated:</h3>
+<div id="fully-vaccinated-individuals-by-zipcode-and-boroughs"
+class="section level3">
+<h3>Fully vaccinated individuals by zipcode and boroughs:</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-2-1.png" width="90%" /></p>
-<p>This plot shows the proportion of individuals who are fully
-vaccinated as of March 9th 2022. We would have expected</p>
-<p>Additional/Booster vaccinated:
-<img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+</div>
+<div
+id="additionalbooster-vaccinated-individuals-by-zipcode-and-boroughs"
+class="section level3">
+<h3>Additional/Booster vaccinated individuals by zipcode and
+boroughs:</h3>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+</div>
+</div>
+<div
+id="the-education-attainment-in-nyc-by-vaccination-status-and-borough"
+class="section level1">
+<h1><strong>2. The Education Attainment in NYC by Vaccination Status and
+Borough</strong></h1>
+<div id="fully-vaccinated-inidividuals-by-education-status-and-age"
+class="section level3">
+<h3>Fully Vaccinated Inidividuals by Education Status and Age</h3>
+<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
+  geom_point(shape = &quot;circle&quot;, size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = &quot;Proportion of Individuals by Education Status&quot;,
+    y = &quot;Proportion of Individuals Fully Vaccinated &quot;,
+    title = &quot;Fully Vaccinated Individuals by Education Status and Age&quot;,
+    color = &quot;Education Status&quot;
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(age))</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-5-1.png" width="90%" /></p>
+</div>
+<div id="fully-vaccinated-individuals-by-education-status-and-boroughs"
+class="section level3">
+<h3>Fully Vaccinated Individuals by Education Status and Boroughs</h3>
+<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = booster_prop, colour = borough) +
+  geom_point(shape = &quot;circle&quot;, size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = &quot;Education Status&quot;,
+    y = &quot;Proportion of individuals receiving boosters&quot;,
+    title = &quot;Additional/Boosted individuals by Education Status and Borough&quot;,
+    color = &quot;Boroughs&quot;
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(edu))</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="90%" /></p>
+</div>
+<div
+id="additionalboosted-inidividuals-by-education-status-and-boroughs"
+class="section level3">
+<h3>Additional/Boosted Inidividuals by Education Status and
+Boroughs</h3>
+<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = booster_prop, colour = borough) +
+  geom_point(shape = &quot;circle&quot;, size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = &quot;Education Status&quot;,
+    y = &quot;Proportion of individuals receiving boosters&quot;,
+    title = &quot;Additional/Boosted individuals by Education Status and Borough&quot;,
+    color = &quot;Boroughs&quot;
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(edu))</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
 </div>
 </div>
 
