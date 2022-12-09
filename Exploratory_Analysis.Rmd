@@ -8,6 +8,9 @@ output:
 ```{r setup, include = FALSE}
 library (tidyverse)
 library (readxl)
+library(plotly)
+
+
 knitr::opts_chunk$set(
 	echo = TRUE,
 	warning = FALSE,
@@ -33,37 +36,45 @@ vaccine_coverage_df = read_csv(file = "./data/coverage_by_modzcta_adults.csv") %
 MADE SOME SCATTERPLOTS with smooth line
 
 ```{r plot1}
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_FULLY_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_fully_cumulative, color = borough)) + geom_point(alpha = .5) +
   geom_smooth(se = FALSE) + 
-  facet_grid(. ~ BOROUGH)
+  facet_grid(. ~ borough)
 
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_partially_cumulative, color = borough)) + geom_point(alpha = .5) +
   geom_smooth(se = FALSE) + 
-  facet_grid(. ~ BOROUGH)
+  facet_grid(. ~ borough)
 
 ```
 
-MADE SOME SIMPL SCATTERPLOTS
+MADE SOME SIMPLE SCATTERPLOTS AND THEIR GGPLOTLY 
 
 ```{r}
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_FULLY_CUMULATIVE, color = BOROUGH)) + geom_point()
-
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULATIVE, color = BOROUGH)) + geom_point()
 
 
-ggplot(vaccine_coverage_df,aes (x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+scatter_ggplot1 = 
+vaccine_coverage_df   %>%
+  ggplot(aes(x = pop_denominator, y = count_partially_cumulative, color = borough)) +
+  geom_point(alpha = 1) +
+  coord_cartesian()
 
-ggplot(vaccine_coverage_df,aes (x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+ggplotly(scatter_ggplot1)
+
+ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_partially_cumulative, color = borough)) + geom_point()
+
+
+ggplot(vaccine_coverage_df,aes (x = count_fully_cumulative, fill = borough)) + geom_histogram()
+
+ggplot(vaccine_coverage_df,aes (x = count_partially_cumulative, fill = borough)) + geom_histogram()
 
 ```
 
 MADE SOME DENSITY PLOTS WITH A DENISTY BAR BELOW
 
 ```{r}
-ggplot(vaccine_coverage_df, aes(x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + 
+ggplot(vaccine_coverage_df, aes(x = count_fully_cumulative, fill = borough)) + 
   geom_density(alpha = .4, adjust = .5, color = "blue") + geom_rug()
 
-ggplot(vaccine_coverage_df, aes(x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + 
+ggplot(vaccine_coverage_df, aes(x = count_partially_cumulative, fill = borough)) + 
   geom_density(alpha = .4, adjust = .5, color = "blue") + geom_rug()
 
 ```
@@ -71,15 +82,15 @@ ggplot(vaccine_coverage_df, aes(x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH))
 ### **2. The booster coverage in NYC**
 
 ```{r}
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_additional_cumulative, color = borough)) + geom_point(alpha = .5) +
   geom_smooth(se = FALSE) + 
-  facet_grid(. ~ BOROUGH)
+  facet_grid(. ~ borough)
 
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point()
+ggplot(vaccine_coverage_df,aes (x =pop_denominator , y = count_additional_cumulative, color = borough)) + geom_point()
 
-ggplot(vaccine_coverage_df,aes (x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+ggplot(vaccine_coverage_df,aes (x = count_additional_cumulative, fill = borough)) + geom_histogram()
 
-ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + 
+ggplot(vaccine_coverage_df, aes(x = count_additional_cumulative, fill = borough)) + 
   geom_density(alpha = .4, adjust = .5, color = "blue")+ geom_rug()
 
 ```
@@ -87,13 +98,11 @@ ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)
 ### **3. Vaccination and booster coverage vs The Zip Code data for NYC**
 
 
-
-
 ### **4. The Education Attainment vs vaccination and booster coverage **
 
 ### **5. The Poverty Status vs vaccination and booster coverage**
 
-```{r}
+```{r include = FALSE}
 poverty_status_df = read_csv(file = "./data/poverty_status.csv", skip = 1) %>% 
   janitor::clean_names()
 
@@ -103,11 +112,43 @@ poverty_status_tidy = poverty_status_df%>%
 ```
 
 
-```{r}
+```{r show_col_types = FALSE, ECHO = FALSE, include = FALSE}
 zipcode_df = read_csv(file = "./data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv")
+```
+
+```{r vaccine-data, include = FALSE}
+vaccine_data = read.csv(file = "./data/coverage_by_modzcta_adults.csv") %>%
+  janitor::clean_names() %>%
+  mutate(modzcta = as.character(modzcta))
+
+vaccine_data$modzcta <- gsub('\\s+', '', vaccine_data$modzcta)
+poverty_status_tidy$modzcta <- gsub('\\s+', '', poverty_status_tidy$modzcta)
+```
+
+```{r merge-dataset, include = FALSE}
+joined_dataset_poverty = merge(vaccine_data,poverty_status_tidy, by = "modzcta", all.x = TRUE)
+```
+
+#### total est population poverty status above 18 vs total pop by borough
+```{r}
+ggplot(joined_dataset_poverty, aes ( x=total_pop_pov_above_18, y = estimate_total_population_for_whom_poverty_status_is_determined, color = borough)) + geom_point()
+```
+
+#### Total pop pov above 18 vs fully vaccinated by borough
+```{r}
+ggplot(joined_dataset_poverty, aes (x = total_pop_pov_above_18, y = count_fully_cumulative, color = borough)) + geom_point()
+```
+
+#### Total pop pov above 18 vs partially vaccinated by borough
+```{r}
+ggplot(joined_dataset_poverty, aes (x = total_pop_pov_above_18, y = count_fully_cumulative, color = borough)) + geom_point()
 ```
 
 
 
-
 ### **6. The Median Income vs vaccination and booster coverage**
+
+
+
+
+
