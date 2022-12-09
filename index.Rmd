@@ -54,4 +54,4 @@ Additional interactivity added using plotly (v4.13.0) and Shiny (v1.5.0).
 
 * [Pooja Desai](https://www.poojamdesai.com)
 
-* [Sabah Usmani]
+* [Sabah Usmani](https://sabah-usmani.github.io/)
