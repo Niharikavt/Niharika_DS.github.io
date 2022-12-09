@@ -35,7 +35,7 @@ scale_fill_discrete = scale_fill_viridis_d
 merged_vaccine_data = read_csv(file="./data/merged_vaccine_data.csv")
 ```
 
-Fully vaccinated:
+### Fully vaccinated:
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
