@@ -6,26 +6,95 @@ output:
 ---
 
 ## **Data Sources**
-We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas.
 
-Details about MODZTA can be found [here](https://nychealth.github.io/covid-maps/modzcta-geo/about.html) and the [GitHub Repository](https://github.com/nychealth/coronavirus-data/tree/master/Geography-resources).
+#### **1. The vaccination coverage and booster data in NYC**
 
-Along with this we used four datasets from [US Census Bureau](https://data.census.gov) to construct our analysis of socioeconomic and demographic variables.We used the New York State census data and merged them using the NYC MODZTA.
+We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data).
 
-1. [Total population](https://data.census.gov/table?q=P1&tid=DECENNIALPL2020.P1)
+#### **2. The Zip Code data for NYC**
 
-`r tot_pop_df = read_csv(file = "./data/tot_pop.csv")`
+MODZCTA (Modified Zipcode Tabulated Areas) is a geography used to analyze health data. The MODZCTA geography combines census blocks with smaller populations to allow more stable estimates of population size for rate calculation.
+Details about MODZTA can be found [here](https://nychealth.github.io/covid-maps/modzcta-geo/about.html) and the zip code data was pulled from their [GitHub Repository](https://github.com/nychealth/coronavirus-data/tree/master/Geography-resources).
 
-2. [Education Attainment](https://data.census.gov/table?q=S1501&tid=ACSST1Y2021.S1501)
+Along with this we used additional datasets from [US Census Bureau](https://data.census.gov) to construct our analysis of socioeconomic and demographic variables.We filtered and downloaded only New York State Census Data and merged datasets using the NYC MODZTA on the zip code level.
 
-3. [Poverty Status in the past 12 months](https://data.census.gov/table?q=S1701)
+#### **3. The Total Population ** 
+[P1: Race for the Total Population (Decennial Census 2020) ](https://data.census.gov/table?q=P1&tid=DECENNIALPL2020.P1)
 
-4. [Median Income in the past 12 months](https://data.census.gov/table?q=S1903)
+#### **4. The Education Attainment **
+[S1501: Educational Attainment 2020](https://data.census.gov/table?q=S1501&tid=ACSST1Y2021.S1501)
 
-## **Data Cleaning**
+#### **5. The Poverty Status in the past 12 months **
+[S1701: Poverty status in the past 12 months (2021)](https://data.census.gov/table?q=S1701)
 
-1. MODZTA and Vaccination Coverage 
-2. Total Population
-3. Education Attainment
-4. Poverty Status
-5. Median income
+#### **6. The Median Income in the past 12 months **
+[S1903: Median Income in the past 12 months (In 2021 Inflation adjusted dollars)](https://data.census.gov/table?q=S1903)
+
+## **Data Processing and Cleaning**
+
+#### **1. The vaccination coverage and booster data in NYC**
+This repository contains information on COVID-19 vaccination and booster data reporting across the five boroughs, updated daily, aggregated at modified zip code tabulation areas (MODZCTAs). Booster data was only available for those aged 18+ from 9th March 2022 onwards.We filtered out all the missing values and kept only the columns that were relevant for our analysis.
+
+After data cleaning, we had the following variables in our dataset:
+
+- `Neighborhood_Name`: Neighborhoods in NYC like Chelsea, Financial District, Chinatown, Lower East Side, NoMad, SoHo, etc.
+- `Borough`: Five boroughs - Manhattan, Staten Island, Queens, Brooklyn and Bronx.
+- `MODZCTA`:We report information by geography using modified ZIP Code Tabulation Areas (MODZCTA) based on the ZIP code of residence reported by the vaccination recipient at the time of vaccination.
+- `Label`:Multiple zipcodes which fell under the same MODZCTA.
+- `Pop_Denominator`:The Health Department produced these population estimates using data from the U.S. Census Bureau and incorporating additional data from the NYC Department of City Planning and the Department of Buildings on new housing construction.
+- `Count_Partially_Cumulative`:The number of people who have received the first dose of a two-dose primary vaccine series (i.e. Pfizer-BioNtech or Moderna).
+- `Count_Fully_Cumulative`: People who have received both doses of the Pfizer, Moderna or AstraZeneca primary vaccine series or the one dose of the Johnson & Johnson vaccine primary vaccine series.
+- `Count_1Plus_Cumulative`:People who have received either the first dose of the two-dose Pfizer or Moderna primary vaccine series or the one dose of the Johnson & Johnson primary vaccine series. New Yorkers who received the AstraZeneca vaccine are only counted if they received both doses of the two-dose vaccine.
+- `Count_Additional_Cumulative`:People who have received additional doses of an FDA-approved vaccine after completing their primary series. This includes first and second booster shots, as well as additional doses for people who are immunocompromised.
+
+We further calculated proportions for each vaccination status by dividing the cumulative vaccination status by population denominator.
+
+- `Count_Partially_prop`=Count_Partially_Cumulative/Pop_Denominator
+- `Count_Fully_prop`=Count_Fully_Cumulative/Pop_Denominator
+- `Count_1Plus_prop`=Count_1Plus_Cumulative/Pop_Denominator
+- `Count_Additional_prop`=Count_Additional_Cumulative/Pop_Denominator
+
+#### **2. The Zip Code data for NYC**
+This repository contained the MODZCTA and ZCTA for New York.
+MODZCTA (Modified Zipcode Tabulated Areas) is a geography used to analyze health data. The MODZCTA geography combines census blocks with smaller populations to allow more stable estimates of population size for rate calculation.
+
+We report information by geography using modified ZIP Code Tabulation Areas (MODZCTA) based on the ZIP code of residence reported by the vaccination recipient at the time of vaccination.
+
+After data cleaning, we had the following variables in out dataset:
+
+- `MODZCTA`
+- `Label`
+- `ZCTA`
+- `pop_est`
+- `the_geom`
+
+#### **3. The Total Population ** 
+
+We removed the null values. After cleaning, this dataset contains the following -
+
+- `GEO_ID` : Geography
+- `Name`: Geographic Area Name
+- `P001001` : Total
+
+#### **4. The Education Attainment **
+
+We removed the null values. After cleaning, this dataset contains the following -
+
+-
+
+
+#### **5. The Poverty Status **
+Neighborhood poverty is the percent of a ZIP code's population living below the Federal Poverty Level, per the 2014-2018 American Community Survey.
+
+After data cleaning we had the following variables -
+
+- 
+
+
+#### **6. The Median Income **
+
+We removed the null values. After cleaning, this dataset contains the following -
+
+- 
+
+
