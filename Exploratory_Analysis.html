@@ -35,6 +35,13 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -371,7 +378,200 @@ div.tocify {
 </div>
 
 
+<div id="the-vaccination-coverage-in-nyc" class="section level3">
+<h3><strong>1. The vaccination coverage in NYC</strong></h3>
+<p>MADE SOME SCATTERPLOTS with smooth line</p>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_fully_cumulative, color = borough)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ borough)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/plot1-1.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_partially_cumulative, color = borough)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ borough)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/plot1-2.png" width="90%" /></p>
+<p>MADE SOME SIMPLE SCATTERPLOTS AND THEIR GGPLOTLY</p>
+<pre class="r"><code>scatter_ggplot1 = 
+vaccine_coverage_df   %&gt;%
+  ggplot(aes(x = pop_denominator, y = count_partially_cumulative, color = borough)) +
+  geom_point(alpha = 1) +
+  coord_cartesian()
 
+ggplotly(scatter_ggplot1)</code></pre>
+<div id="htmlwidget-abffa8d3d80f1f57aa1b" style="width:90%;height:576px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-abffa8d3d80f1f57aa1b">{"x":{"data":[{"x":[35946.71,54805.81,57359.96,27397.39,30573.43,66839.64,53117.58,60560.21,34636.24,42448,38803.26,58726.65,56284.98,3510.49,33825.65,54731.54,77336.23,58195.5,56415.64,11835.69,17715.36,50865.6,45025.1,8716.2,36101.58],"y":[3772,5900,6198,3074,3229,7057,6547,6378,3699,4451,3025,5034,4537,249,2176,4169,6909,5684,4144,892,1367,5204,3787,941,1918],"text":["pop_denominator: 35946.71<br />count_partially_cumulative:  3772<br />borough: Bronx","pop_denominator: 54805.81<br />count_partially_cumulative:  5900<br />borough: Bronx","pop_denominator: 57359.96<br />count_partially_cumulative:  6198<br />borough: Bronx","pop_denominator: 27397.39<br />count_partially_cumulative:  3074<br />borough: Bronx","pop_denominator: 30573.43<br />count_partially_cumulative:  3229<br />borough: Bronx","pop_denominator: 66839.64<br />count_partially_cumulative:  7057<br />borough: Bronx","pop_denominator: 53117.58<br />count_partially_cumulative:  6547<br />borough: Bronx","pop_denominator: 60560.21<br />count_partially_cumulative:  6378<br />borough: Bronx","pop_denominator: 34636.24<br />count_partially_cumulative:  3699<br />borough: Bronx","pop_denominator: 42448.00<br />count_partially_cumulative:  4451<br />borough: Bronx","pop_denominator: 38803.26<br />count_partially_cumulative:  3025<br />borough: Bronx","pop_denominator: 58726.65<br />count_partially_cumulative:  5034<br />borough: Bronx","pop_denominator: 56284.98<br />count_partially_cumulative:  4537<br />borough: Bronx","pop_denominator:  3510.49<br />count_partially_cumulative:   249<br />borough: Bronx","pop_denominator: 33825.65<br />count_partially_cumulative:  2176<br />borough: Bronx","pop_denominator: 54731.54<br />count_partially_cumulative:  4169<br />borough: Bronx","pop_denominator: 77336.23<br />count_partially_cumulative:  6909<br />borough: Bronx","pop_denominator: 58195.50<br />count_partially_cumulative:  5684<br />borough: Bronx","pop_denominator: 56415.64<br />count_partially_cumulative:  4144<br />borough: Bronx","pop_denominator: 11835.69<br />count_partially_cumulative:   892<br />borough: Bronx","pop_denominator: 17715.36<br />count_partially_cumulative:  1367<br />borough: Bronx","pop_denominator: 50865.60<br />count_partially_cumulative:  5204<br />borough: Bronx","pop_denominator: 45025.10<br />count_partially_cumulative:  3787<br />borough: Bronx","pop_denominator:  8716.20<br />count_partially_cumulative:   941<br />borough: Bronx","pop_denominator: 36101.58<br />count_partially_cumulative:  1918<br />borough: Bronx"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"Bronx","legendgroup":"Bronx","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[53066.26,59978.9,56436.82,33743.15,62134.07,66642.05,70401.64,54828.8,49548.95,74916.07,55341.02,48644.6,73712.3,56922.08,46042.94,34613.85,53726.25,57912.51,72891.63,64338.77,32062.1,62432.22,37631.32,45775.98,77335.54,35510.23,65554.74,64635.23,30285.65,21455.8,56732.43,73346.64,65010.78,76845.81,37702.33,45933.55,10746.76],"y":[6763,4526,4075,3025,5889,6720,7060,3669,3269,6693,6068,4428,5427,4761,4731,3565,3802,4322,9756,7242,3344,4108,2676,3683,7212,2192,3640,4550,2389,2073,5136,4097,4089,5414,4933,4410,992],"text":["pop_denominator: 53066.26<br />count_partially_cumulative:  6763<br />borough: Brooklyn","pop_denominator: 59978.90<br />count_partially_cumulative:  4526<br />borough: Brooklyn","pop_denominator: 56436.82<br />count_partially_cumulative:  4075<br />borough: Brooklyn","pop_denominator: 33743.15<br />count_partially_cumulative:  3025<br />borough: Brooklyn","pop_denominator: 62134.07<br />count_partially_cumulative:  5889<br />borough: Brooklyn","pop_denominator: 66642.05<br />count_partially_cumulative:  6720<br />borough: Brooklyn","pop_denominator: 70401.64<br />count_partially_cumulative:  7060<br />borough: Brooklyn","pop_denominator: 54828.80<br />count_partially_cumulative:  3669<br />borough: Brooklyn","pop_denominator: 49548.95<br />count_partially_cumulative:  3269<br />borough: Brooklyn","pop_denominator: 74916.07<br />count_partially_cumulative:  6693<br />borough: Brooklyn","pop_denominator: 55341.02<br />count_partially_cumulative:  6068<br />borough: Brooklyn","pop_denominator: 48644.60<br />count_partially_cumulative:  4428<br />borough: Brooklyn","pop_denominator: 73712.30<br />count_partially_cumulative:  5427<br />borough: Brooklyn","pop_denominator: 56922.08<br />count_partially_cumulative:  4761<br />borough: Brooklyn","pop_denominator: 46042.94<br />count_partially_cumulative:  4731<br />borough: Brooklyn","pop_denominator: 34613.85<br />count_partially_cumulative:  3565<br />borough: Brooklyn","pop_denominator: 53726.25<br />count_partially_cumulative:  3802<br />borough: Brooklyn","pop_denominator: 57912.51<br />count_partially_cumulative:  4322<br />borough: Brooklyn","pop_denominator: 72891.63<br />count_partially_cumulative:  9756<br />borough: Brooklyn","pop_denominator: 64338.77<br />count_partially_cumulative:  7242<br />borough: Brooklyn","pop_denominator: 32062.10<br />count_partially_cumulative:  3344<br />borough: Brooklyn","pop_denominator: 62432.22<br />count_partially_cumulative:  4108<br />borough: Brooklyn","pop_denominator: 37631.32<br />count_partially_cumulative:  2676<br />borough: Brooklyn","pop_denominator: 45775.98<br />count_partially_cumulative:  3683<br />borough: Brooklyn","pop_denominator: 77335.54<br />count_partially_cumulative:  7212<br />borough: Brooklyn","pop_denominator: 35510.23<br />count_partially_cumulative:  2192<br />borough: Brooklyn","pop_denominator: 65554.74<br />count_partially_cumulative:  3640<br />borough: Brooklyn","pop_denominator: 64635.23<br />count_partially_cumulative:  4550<br />borough: Brooklyn","pop_denominator: 30285.65<br />count_partially_cumulative:  2389<br />borough: Brooklyn","pop_denominator: 21455.80<br />count_partially_cumulative:  2073<br />borough: Brooklyn","pop_denominator: 56732.43<br />count_partially_cumulative:  5136<br />borough: Brooklyn","pop_denominator: 73346.64<br />count_partially_cumulative:  4097<br />borough: Brooklyn","pop_denominator: 65010.78<br />count_partially_cumulative:  4089<br />borough: Brooklyn","pop_denominator: 76845.81<br />count_partially_cumulative:  5414<br />borough: Brooklyn","pop_denominator: 37702.33<br />count_partially_cumulative:  4933<br />borough: Brooklyn","pop_denominator: 45933.55<br />count_partially_cumulative:  4410<br />borough: Brooklyn","pop_denominator: 10746.76<br />count_partially_cumulative:   992<br />borough: Brooklyn"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(59,82,139,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(59,82,139,1)"}},"hoveron":"points","name":"Brooklyn","legendgroup":"Brooklyn","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[25536.66,63973.22,50398.54,2684.95,8169.56,3155.66,5573.4,50563.97,30671.32,45084.43,20884.75,24655.72,27625.86,47219.34,14525.37,11074.47,40079.15,39649.27,28093.47,53514.3,48892.24,78357.64,31433.75,52767.1,40085.88,62632.91,23158.57,48898.28,52605.38,48322.89,34453.5,28175.25,25289.35,17343.23,20421.84,20884.26,36148.6,9832,24466.3,5375.84,19863.75,49297.99,7517.17,4396.18],"y":[8231,7419,6675,718,1542,988,1141,5466,3452,5415,2657,3617,3338,7007,3931,7071,11985,3898,5055,6622,5162,9139,3053,7441,3782,5770,2198,4576,4877,3980,2758,3164,10450,1261,3124,2013,2973,1115,3399,638,2355,5124,786,487],"text":["pop_denominator: 25536.66<br />count_partially_cumulative:  8231<br />borough: Manhattan","pop_denominator: 63973.22<br />count_partially_cumulative:  7419<br />borough: Manhattan","pop_denominator: 50398.54<br />count_partially_cumulative:  6675<br />borough: Manhattan","pop_denominator:  2684.95<br />count_partially_cumulative:   718<br />borough: Manhattan","pop_denominator:  8169.56<br />count_partially_cumulative:  1542<br />borough: Manhattan","pop_denominator:  3155.66<br />count_partially_cumulative:   988<br />borough: Manhattan","pop_denominator:  5573.40<br />count_partially_cumulative:  1141<br />borough: Manhattan","pop_denominator: 50563.97<br />count_partially_cumulative:  5466<br />borough: Manhattan","pop_denominator: 30671.32<br />count_partially_cumulative:  3452<br />borough: Manhattan","pop_denominator: 45084.43<br />count_partially_cumulative:  5415<br />borough: Manhattan","pop_denominator: 20884.75<br />count_partially_cumulative:  2657<br />borough: Manhattan","pop_denominator: 24655.72<br />count_partially_cumulative:  3617<br />borough: Manhattan","pop_denominator: 27625.86<br />count_partially_cumulative:  3338<br />borough: Manhattan","pop_denominator: 47219.34<br />count_partially_cumulative:  7007<br />borough: Manhattan","pop_denominator: 14525.37<br />count_partially_cumulative:  3931<br />borough: Manhattan","pop_denominator: 11074.47<br />count_partially_cumulative:  7071<br />borough: Manhattan","pop_denominator: 40079.15<br />count_partially_cumulative: 11985<br />borough: Manhattan","pop_denominator: 39649.27<br />count_partially_cumulative:  3898<br />borough: Manhattan","pop_denominator: 28093.47<br />count_partially_cumulative:  5055<br />borough: Manhattan","pop_denominator: 53514.30<br />count_partially_cumulative:  6622<br />borough: Manhattan","pop_denominator: 48892.24<br />count_partially_cumulative:  5162<br />borough: Manhattan","pop_denominator: 78357.64<br />count_partially_cumulative:  9139<br />borough: Manhattan","pop_denominator: 31433.75<br />count_partially_cumulative:  3053<br />borough: Manhattan","pop_denominator: 52767.10<br />count_partially_cumulative:  7441<br />borough: Manhattan","pop_denominator: 40085.88<br />count_partially_cumulative:  3782<br />borough: Manhattan","pop_denominator: 62632.91<br />count_partially_cumulative:  5770<br />borough: Manhattan","pop_denominator: 23158.57<br />count_partially_cumulative:  2198<br />borough: Manhattan","pop_denominator: 48898.28<br />count_partially_cumulative:  4576<br />borough: Manhattan","pop_denominator: 52605.38<br />count_partially_cumulative:  4877<br />borough: Manhattan","pop_denominator: 48322.89<br />count_partially_cumulative:  3980<br />borough: Manhattan","pop_denominator: 34453.50<br />count_partially_cumulative:  2758<br />borough: Manhattan","pop_denominator: 28175.25<br />count_partially_cumulative:  3164<br />borough: Manhattan","pop_denominator: 25289.35<br />count_partially_cumulative: 10450<br />borough: Manhattan","pop_denominator: 17343.23<br />count_partially_cumulative:  1261<br />borough: Manhattan","pop_denominator: 20421.84<br />count_partially_cumulative:  3124<br />borough: Manhattan","pop_denominator: 20884.26<br />count_partially_cumulative:  2013<br />borough: Manhattan","pop_denominator: 36148.60<br />count_partially_cumulative:  2973<br />borough: Manhattan","pop_denominator:  9832.00<br />count_partially_cumulative:  1115<br />borough: Manhattan","pop_denominator: 24466.30<br />count_partially_cumulative:  3399<br />borough: Manhattan","pop_denominator:  5375.84<br />count_partially_cumulative:   638<br />borough: Manhattan","pop_denominator: 19863.75<br />count_partially_cumulative:  2355<br />borough: Manhattan","pop_denominator: 49297.99<br />count_partially_cumulative:  5124<br />borough: Manhattan","pop_denominator:  7517.17<br />count_partially_cumulative:   786<br />borough: Manhattan","pop_denominator:  4396.18<br />count_partially_cumulative:   487<br />borough: Manhattan"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(33,144,140,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(33,144,140,1)"}},"hoveron":"points","name":"Manhattan","legendgroup":"Manhattan","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[16322.92,30635.13,24950.08,29828.42,21569.04,30844.19,31753.42,5343.22,46305.65,66856.37,17775.53,31475.11,29641.54,16134.98,21576.15,14730.32,5404,29084.9,35054.7,11544.71,31414.15,83122.23,26106.55,26609.32,49589.9,74412.58,34948.32,59627.01,68556.99,28126.17,29592.35,79512.77,17780.06,30605.05,34691.42,22906.27,15351.36,19793.91,23723.61,28809.61,37919.05,37131.19,30741.48,25568.22,25411.54,16079.91,19076.56,14737.78,26071.37,48714.59,28024.61,53242.83,46003.22,15396.64,48413.6,15519,9767.71,16540.37,2689.54],"y":[788,6542,2591,2505,1779,2148,2904,702,4596,7765,2052,2164,2424,1031,1706,1017,383,1943,2744,844,2412,11960,3288,2030,5810,8138,2431,3564,6153,2123,1658,7004,1170,2387,2342,1176,1056,1724,1829,2579,3096,2586,2665,1916,1877,1061,1462,1212,1701,4595,2438,4456,3617,1291,4205,1292,603,887,186],"text":["pop_denominator: 16322.92<br />count_partially_cumulative:   788<br />borough: Queens","pop_denominator: 30635.13<br />count_partially_cumulative:  6542<br />borough: Queens","pop_denominator: 24950.08<br />count_partially_cumulative:  2591<br />borough: Queens","pop_denominator: 29828.42<br />count_partially_cumulative:  2505<br />borough: Queens","pop_denominator: 21569.04<br />count_partially_cumulative:  1779<br />borough: Queens","pop_denominator: 30844.19<br />count_partially_cumulative:  2148<br />borough: Queens","pop_denominator: 31753.42<br />count_partially_cumulative:  2904<br />borough: Queens","pop_denominator:  5343.22<br />count_partially_cumulative:   702<br />borough: Queens","pop_denominator: 46305.65<br />count_partially_cumulative:  4596<br />borough: Queens","pop_denominator: 66856.37<br />count_partially_cumulative:  7765<br />borough: Queens","pop_denominator: 17775.53<br />count_partially_cumulative:  2052<br />borough: Queens","pop_denominator: 31475.11<br />count_partially_cumulative:  2164<br />borough: Queens","pop_denominator: 29641.54<br />count_partially_cumulative:  2424<br />borough: Queens","pop_denominator: 16134.98<br />count_partially_cumulative:  1031<br />borough: Queens","pop_denominator: 21576.15<br />count_partially_cumulative:  1706<br />borough: Queens","pop_denominator: 14730.32<br />count_partially_cumulative:  1017<br />borough: Queens","pop_denominator:  5404.00<br />count_partially_cumulative:   383<br />borough: Queens","pop_denominator: 29084.90<br />count_partially_cumulative:  1943<br />borough: Queens","pop_denominator: 35054.70<br />count_partially_cumulative:  2744<br />borough: Queens","pop_denominator: 11544.71<br />count_partially_cumulative:   844<br />borough: Queens","pop_denominator: 31414.15<br />count_partially_cumulative:  2412<br />borough: Queens","pop_denominator: 83122.23<br />count_partially_cumulative: 11960<br />borough: Queens","pop_denominator: 26106.55<br />count_partially_cumulative:  3288<br />borough: Queens","pop_denominator: 26609.32<br />count_partially_cumulative:  2030<br />borough: Queens","pop_denominator: 49589.90<br />count_partially_cumulative:  5810<br />borough: Queens","pop_denominator: 74412.58<br />count_partially_cumulative:  8138<br />borough: Queens","pop_denominator: 34948.32<br />count_partially_cumulative:  2431<br />borough: Queens","pop_denominator: 59627.01<br />count_partially_cumulative:  3564<br />borough: Queens","pop_denominator: 68556.99<br />count_partially_cumulative:  6153<br />borough: Queens","pop_denominator: 28126.17<br />count_partially_cumulative:  2123<br />borough: Queens","pop_denominator: 29592.35<br />count_partially_cumulative:  1658<br />borough: Queens","pop_denominator: 79512.77<br />count_partially_cumulative:  7004<br />borough: Queens","pop_denominator: 17780.06<br />count_partially_cumulative:  1170<br />borough: Queens","pop_denominator: 30605.05<br />count_partially_cumulative:  2387<br />borough: Queens","pop_denominator: 34691.42<br />count_partially_cumulative:  2342<br />borough: Queens","pop_denominator: 22906.27<br />count_partially_cumulative:  1176<br />borough: Queens","pop_denominator: 15351.36<br />count_partially_cumulative:  1056<br />borough: Queens","pop_denominator: 19793.91<br />count_partially_cumulative:  1724<br />borough: Queens","pop_denominator: 23723.61<br />count_partially_cumulative:  1829<br />borough: Queens","pop_denominator: 28809.61<br />count_partially_cumulative:  2579<br />borough: Queens","pop_denominator: 37919.05<br />count_partially_cumulative:  3096<br />borough: Queens","pop_denominator: 37131.19<br />count_partially_cumulative:  2586<br />borough: Queens","pop_denominator: 30741.48<br />count_partially_cumulative:  2665<br />borough: Queens","pop_denominator: 25568.22<br />count_partially_cumulative:  1916<br />borough: Queens","pop_denominator: 25411.54<br />count_partially_cumulative:  1877<br />borough: Queens","pop_denominator: 16079.91<br />count_partially_cumulative:  1061<br />borough: Queens","pop_denominator: 19076.56<br />count_partially_cumulative:  1462<br />borough: Queens","pop_denominator: 14737.78<br />count_partially_cumulative:  1212<br />borough: Queens","pop_denominator: 26071.37<br />count_partially_cumulative:  1701<br />borough: Queens","pop_denominator: 48714.59<br />count_partially_cumulative:  4595<br />borough: Queens","pop_denominator: 28024.61<br />count_partially_cumulative:  2438<br />borough: Queens","pop_denominator: 53242.83<br />count_partially_cumulative:  4456<br />borough: Queens","pop_denominator: 46003.22<br />count_partially_cumulative:  3617<br />borough: Queens","pop_denominator: 15396.64<br />count_partially_cumulative:  1291<br />borough: Queens","pop_denominator: 48413.60<br />count_partially_cumulative:  4205<br />borough: Queens","pop_denominator: 15519.00<br />count_partially_cumulative:  1292<br />borough: Queens","pop_denominator:  9767.71<br />count_partially_cumulative:   603<br />borough: Queens","pop_denominator: 16540.37<br />count_partially_cumulative:   887<br />borough: Queens","pop_denominator:  2689.54<br />count_partially_cumulative:   186<br />borough: Queens"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(93,200,99,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(93,200,99,1)"}},"hoveron":"points","name":"Queens","legendgroup":"Queens","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[30789.03,13841.82,19271.57,32365.49,34316.79,42372.41,11247.29,23778.46,25505.78,17381.07,48423.66,73874.68],"y":[2762,1492,1643,2817,2453,2555,547,1155,1450,1516,2453,4266],"text":["pop_denominator: 30789.03<br />count_partially_cumulative:  2762<br />borough: Staten Island","pop_denominator: 13841.82<br />count_partially_cumulative:  1492<br />borough: Staten Island","pop_denominator: 19271.57<br />count_partially_cumulative:  1643<br />borough: Staten Island","pop_denominator: 32365.49<br />count_partially_cumulative:  2817<br />borough: Staten Island","pop_denominator: 34316.79<br />count_partially_cumulative:  2453<br />borough: Staten Island","pop_denominator: 42372.41<br />count_partially_cumulative:  2555<br />borough: Staten Island","pop_denominator: 11247.29<br />count_partially_cumulative:   547<br />borough: Staten Island","pop_denominator: 23778.46<br />count_partially_cumulative:  1155<br />borough: Staten Island","pop_denominator: 25505.78<br />count_partially_cumulative:  1450<br />borough: Staten Island","pop_denominator: 17381.07<br />count_partially_cumulative:  1516<br />borough: Staten Island","pop_denominator: 48423.66<br />count_partially_cumulative:  2453<br />borough: Staten Island","pop_denominator: 73874.68<br />count_partially_cumulative:  4266<br />borough: Staten Island"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Staten Island","legendgroup":"Staten Island","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":25.7412480974125,"r":7.30593607305936,"b":39.6955859969559,"l":54.7945205479452},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1336.914,87144.094],"tickmode":"array","ticktext":["0","20000","40000","60000","80000"],"tickvals":[0,20000,40000,60000,80000],"categoryorder":"array","categoryarray":["0","20000","40000","60000","80000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"pop_denominator","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-403.95,12574.95],"tickmode":"array","ticktext":["0","2500","5000","7500","10000","12500"],"tickvals":[0,2500,5000,7500,10000,12500],"categoryorder":"array","categoryarray":["0","2500","5000","7500","10000","12500"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"count_partially_cumulative","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"borough","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"50e680793f7":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"50e680793f7","visdat":{"50e680793f7":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>MADE SOME DENSITY PLOTS WITH A DENISTY BAR BELOW</p>
+<pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = count_fully_cumulative, fill = borough)) + 
+  geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;) + geom_rug()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-2-1.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = count_partially_cumulative, fill = borough)) + 
+  geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;) + geom_rug()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-2-2.png" width="90%" /></p>
+</div>
+<div id="the-booster-coverage-in-nyc" class="section level3">
+<h3><strong>2. The booster coverage in NYC</strong></h3>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_additional_cumulative, color = borough)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ borough)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x =pop_denominator , y = count_additional_cumulative, color = borough)) + geom_point()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-2.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = count_additional_cumulative, fill = borough)) + geom_histogram()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-3.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = count_additional_cumulative, fill = borough)) + 
+  geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;)+ geom_rug()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-4.png" width="90%" /></p>
+</div>
+<div id="vaccination-and-booster-coverage-vs-the-zip-code-data-for-nyc"
+class="section level3">
+<h3><strong>3. Vaccination and booster coverage vs The Zip Code data for
+NYC</strong></h3>
+</div>
+<div id="the-education-attainment-vs-vaccination-and-booster-coverage"
+class="section level3">
+<h3><strong>4. The Education Attainment vs vaccination and booster
+coverage </strong></h3>
+</div>
+<div id="the-poverty-status-vs-vaccination-and-booster-coverage"
+class="section level3">
+<h3><strong>5. The Poverty Status vs vaccination and booster
+coverage</strong></h3>
+<div
+id="total-est-population-poverty-status-above-18-vs-total-pop-by-borough"
+class="section level4">
+<h4>total est population poverty status above 18 vs total pop by
+borough</h4>
+<pre class="r"><code>ggplot(joined_dataset_poverty, aes ( x=total_pop_pov_above_18, y = estimate_total_population_for_whom_poverty_status_is_determined, color = borough)) + geom_point()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="90%" /></p>
+</div>
+<div id="total-pop-pov-above-18-vs-fully-vaccinated-by-borough"
+class="section level4">
+<h4>Total pop pov above 18 vs fully vaccinated by borough</h4>
+<pre class="r"><code>ggplot(joined_dataset_poverty, aes (x = total_pop_pov_above_18, y = count_fully_cumulative, color = borough)) + geom_point()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
+</div>
+<div id="total-pop-pov-above-18-vs-partially-vaccinated-by-borough"
+class="section level4">
+<h4>Total pop pov above 18 vs partially vaccinated by borough</h4>
+<pre class="r"><code>ggplot(joined_dataset_poverty, aes (x = total_pop_pov_above_18, y = count_fully_cumulative, color = borough)) + geom_point()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-8-1.png" width="90%" /></p>
+</div>
+</div>
+<div id="the-median-income-vs-vaccination-and-booster-coverage"
+class="section level3">
+<h3><strong>6. The Median Income vs vaccination and booster
+coverage</strong></h3>
+<pre class="r"><code>#Loading income data 
+incomedata &lt;- read_csv(&quot;data/median_income.csv&quot;, skip = 1)</code></pre>
+<pre><code>## New names:
+## Rows: 1794 Columns: 483
+## ── Column specification
+## ──────────────────────────────────────────────────────── Delimiter: &quot;,&quot; chr
+## (396): Geography, Geographic Area Name, Annotation of Estimate!!Number!!... dbl
+## (86): Estimate!!Number!!HOUSEHOLD INCOME BY RACE AND HISPANIC OR LATINO... lgl
+## (1): ...483
+## ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## • `` -&gt; `...483`</code></pre>
+<pre class="r"><code>#Loading zipcode data 
+zipcode_data &lt;- read.csv(&quot;data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv&quot;)
+
+incomedata_clean &lt;- incomedata %&gt;%  
+  janitor::clean_names()  %&gt;%
+  select(geography, geographic_area_name, estimate_median_income_dollars_families_families, estimate_median_income_dollars_nonfamily_households_nonfamily_households) %&gt;%
+  rename (median_income_nonfamily = estimate_median_income_dollars_nonfamily_households_nonfamily_households, median_income_family = estimate_median_income_dollars_families_families) %&gt;% 
+  separate(geographic_area_name, c(&#39;delete&#39;, &#39;modzcta&#39;)) %&gt;% 
+  select(modzcta, median_income_family, median_income_nonfamily)
+
+vaccine_data &lt;- read.csv(&quot;data/coverage_by_modzcta_adults.csv&quot;) %&gt;%
+  janitor::clean_names() %&gt;%
+  mutate(modzcta = as.character(modzcta))
+
+vaccine_data$modzcta &lt;- gsub(&#39;\\s+&#39;, &#39;&#39;, vaccine_data$modzcta)</code></pre>
+<pre class="r"><code>joined_dataset_income = merge(vaccine_data,incomedata_clean, by = &quot;modzcta&quot;, all.x = TRUE)</code></pre>
+<pre class="r"><code>#Cleaning variables in joined data and changing into the correct variable type 
+
+income_zip_clean &lt;- joined_dataset_income %&gt;%
+  mutate(modzcta = as.numeric(modzcta), median_fam = as.numeric(median_income_family), median_nonfam = as.numeric(median_income_nonfamily)) %&gt;% 
+  mutate(median_fam = if_else(is.na(median_fam), 250000, median_fam)) %&gt;% 
+  filter(!is.na(median_nonfam)) %&gt;% 
+  select(modzcta, pop_denominator, count_partially_cumulative, count_fully_cumulative, count_1plus_cumulative, count_additional_cumulative, median_fam, median_nonfam, borough) %&gt;% 
+  mutate(Count_partially_prop = round(count_partially_cumulative/pop_denominator,2), Count_Fully_prop = round(count_fully_cumulative/pop_denominator,2), Count_1Plus_prop = round(count_1plus_cumulative/pop_denominator,2), Count_Additional_prop = round(count_additional_cumulative/pop_denominator,2), income_average = ((median_fam + median_nonfam)/2))
+
+str(income_zip_clean)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    175 obs. of  14 variables:
+##  $ modzcta                    : num  10001 10002 10003 10004 10005 ...
+##  $ pop_denominator            : num  25537 63973 50399 2685 8170 ...
+##  $ count_partially_cumulative : int  8231 7419 6675 718 1542 988 1141 5466 3452 5415 ...
+##  $ count_fully_cumulative     : int  30761 61628 39005 3611 7956 4116 6085 43065 24397 39059 ...
+##  $ count_1plus_cumulative     : int  38992 69047 45680 4329 9498 5104 7226 48531 27849 44474 ...
+##  $ count_additional_cumulative: int  13862 37670 24957 1970 4469 1941 3747 26324 16380 26483 ...
+##  $ median_fam                 : num  134134 37313 205083 207272 250000 ...
+##  $ median_nonfam              : num  86899 31832 98435 159482 174408 ...
+##  $ borough                    : chr  &quot;Manhattan&quot; &quot;Manhattan&quot; &quot;Manhattan&quot; &quot;Manhattan&quot; ...
+##  $ Count_partially_prop       : num  0.32 0.12 0.13 0.27 0.19 0.31 0.2 0.11 0.11 0.12 ...
+##  $ Count_Fully_prop           : num  1.2 0.96 0.77 1.34 0.97 1.3 1.09 0.85 0.8 0.87 ...
+##  $ Count_1Plus_prop           : num  1.53 1.08 0.91 1.61 1.16 1.62 1.3 0.96 0.91 0.99 ...
+##  $ Count_Additional_prop      : num  0.54 0.59 0.5 0.73 0.55 0.62 0.67 0.52 0.53 0.59 ...
+##  $ income_average             : num  110516 34572 151759 183377 212204 ...</code></pre>
+<pre class="r"><code>#GGPLOT of Vaccination and family median income and non family median income by borough
+
+income_zip_clean %&gt;%
+    ggplot() +
+    geom_point(aes(x = median_fam, y=Count_Fully_prop, color=borough), alpha = 0.5)+
+  labs(
+   title = &quot;Proportion Vaccinated &amp; Median Family Income by Borough&quot;, 
+    x = &quot;Median Family Income&quot;, 
+    y = &quot;Proportion Vaccinated (Count_Fully_Prop)&quot;)</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-10-1.png" width="90%" /></p>
+<pre class="r"><code>#GGPLOT of Vaccination and nonfamily median income and non family median income by borough
+income_zip_clean %&gt;%
+    ggplot() +
+    geom_point(aes(x = median_nonfam, y=Count_Fully_prop, color=borough), alpha = 0.5)+
+  labs(
+   title = &quot;Proportion Vaccinated &amp; Median Nonfamily Income by Borough&quot;, 
+    x = &quot;Median nonfamily Income&quot;, 
+    y = &quot;Proportion Vaccinated (Count_Fully_Prop)&quot;)</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-10-2.png" width="90%" /></p>
+<pre class="r"><code>#GGPLOT of Vaccination combined median income and non family median income by borough
+
+income_zip_clean %&gt;%
+    ggplot() +
+    geom_point(aes(x = income_average, y=Count_Fully_prop, color=borough), alpha = 0.5)+
+  labs(
+   title = &quot;Proportion Vaccinated &amp; Median Income by Borough&quot;, 
+    x = &quot;Median Income (family + nonfamily)&quot;, 
+    y = &quot;Proportion Vaccinated (Count_Fully_Prop)&quot;)</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-10-3.png" width="90%" /></p>
+<pre class="r"><code>#GGPLOT OF BOOSTER STATUS AND MEDIAN INCOME 
+income_zip_clean %&gt;%
+    ggplot() +
+    geom_point(aes(x = median_fam, y=Count_Additional_prop, color=borough), alpha = 0.5)+
+  labs(
+   title = &quot;Proportion Boosted &amp; Median Family Income by Borough&quot;, 
+    x = &quot;Median Family Income&quot;, 
+    y = &quot;Proportion Boosted (Count_Additional_Prop)&quot;)</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-11-1.png" width="90%" /></p>
+<pre class="r"><code>income_zip_clean %&gt;%
+    ggplot() +
+    geom_point(aes(x = median_nonfam, y=Count_Additional_prop, color=borough), alpha = 0.5)+
+  labs(
+   title = &quot;Proportion Boosted &amp; Median Nonfamily Income by Borough&quot;, 
+    x = &quot;Median nonfamily Income&quot;, 
+    y = &quot;Proportion Boosted (Count_Additional_Prop)&quot;)</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-11-2.png" width="90%" /></p>
+<pre class="r"><code>income_zip_clean %&gt;%
+    ggplot() +
+    geom_point(aes(x = income_average, y=Count_Additional_prop, color=borough), alpha = 0.5)+
+  labs(
+   title = &quot;Proportion Boosted &amp; Median  Income by Borough&quot;, 
+    x = &quot;Median Income (family + nonfamily)&quot;, 
+    y = &quot;Proportion Boosted (Count_Additional_Prop)&quot;)</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-11-3.png" width="90%" /></p>
+</div>
 
 
 
