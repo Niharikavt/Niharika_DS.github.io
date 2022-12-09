@@ -14,11 +14,10 @@ navbar:
     - icon: fa-brands fa-youtube
       href: 
     - icon: fa-github fa-lg
-    menu: 
-    - text: Data Cleanong Repository
       href: https://github.com/brittshea/p8105_finalproject_fall2022
-    - text: Website Repository
-      href: https://niharikavt.github.io/Niharika_DS.github.io/
+    - icon: fa-github fa-lg
+      href: https://github.com/Niharikavt/Niharika_DS.github.io 
+  
 output:
   html_document:
     theme: flatly
