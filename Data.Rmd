@@ -3,6 +3,7 @@ output:
   html_document:
     toc: true
     toc_float: true
+    
 ---
 ## **Data Sources**
 We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas.
