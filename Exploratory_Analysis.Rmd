@@ -23,7 +23,8 @@ options(
 scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 
-vaccine_coverage_df = read_csv(file = "./data/coverage_by_modzcta_adults.csv")
+vaccine_coverage_df = read_csv(file = "./data/coverage_by_modzcta_adults.csv") %>% 
+  janitor::clean_names()
 
 ```
 
@@ -91,6 +92,20 @@ ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)
 ### **4. The Education Attainment vs vaccination and booster coverage **
 
 ### **5. The Poverty Status vs vaccination and booster coverage**
+
+```{r}
+poverty_status_df = read_csv(file = "./data/poverty_status.csv", skip = 1) %>% 
+  janitor::clean_names()
+
+poverty_status_tidy = poverty_status_df%>% 
+  mutate (modzcta = substr(geographic_area_name,6,11),total_pop_pov_above_18 = estimate_total_population_for_whom_poverty_status_is_determined - estimate_total_population_for_whom_poverty_status_is_determined_age_under_18_years) %>% 
+  select(modzcta, estimate_total_population_for_whom_poverty_status_is_determined, total_pop_pov_above_18)
+```
+
+
+```{r}
+zipcode_df = read_csv(file = "./data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv")
+```
 
 
 
