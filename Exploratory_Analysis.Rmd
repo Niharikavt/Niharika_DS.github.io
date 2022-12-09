@@ -5,11 +5,85 @@ output:
     toc: true
     toc_float: true
 ---
-## **Exploratory Analysis**
+```{r setup, include = FALSE}
+library (tidyverse)
+library (readxl)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = FALSE,
+	fig.width = 8, 
+  fig.height = 6,
+  out.width = "90%"
+)
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
 
-### Dashboard
+vaccine_coverage_df = read_csv(file = "./data/coverage_by_modzcta_adults.csv")
 
-### Mapping
+```
 
-## General Difficulties
+### **1. The vaccination coverage in NYC**
 
+MADE SOME SCATTERPLOTS with smooth line
+
+```{r plot1}
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_FULLY_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ BOROUGH)
+
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ BOROUGH)
+
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ BOROUGH)
+```
+
+MADE SOME SIMPL SCATTERPLOTS
+
+```{r}
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_FULLY_CUMULATIVE, color = BOROUGH)) + geom_point()
+
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULATIVE, color = BOROUGH)) + geom_point()
+
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point()
+
+ggplot(vaccine_coverage_df,aes (x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+
+ggplot(vaccine_coverage_df,aes (x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+
+ggplot(vaccine_coverage_df,aes (x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+
+```
+
+MADE SOME DENSITY PLOTS WITH A DENISTY BAR BELOW
+
+```{r}
+ggplot(vaccine_coverage_df, aes(x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + 
+  geom_density(alpha = .4, adjust = .5, color = "blue") + geom_rug()
+
+ggplot(vaccine_coverage_df, aes(x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + 
+  geom_density(alpha = .4, adjust = .5, color = "blue") + geom_rug()
+
+ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + 
+  geom_density(alpha = .4, adjust = .5, color = "blue")+ geom_rug()
+
+
+```
+
+
+### **2. The booster coverage in NYC**
+
+### **3. Vaccination and booster coverage vs The Zip Code data for NYC**
+
+### **4. The Education Attainment vs vaccination and booster coverage **
+
+### **5. The Poverty Status vs vaccination and booster coverage**
+
+### **6. The Median Income vs vaccination and booster coverage**

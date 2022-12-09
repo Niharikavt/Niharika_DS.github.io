@@ -6,3 +6,5 @@ output:
 ---
 
 ## Mapping
+
+Mapping of vaccination and boosters by zipcode
