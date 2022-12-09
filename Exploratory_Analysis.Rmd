@@ -9,6 +9,7 @@ output:
 library (tidyverse)
 library (readxl)
 library(plotly)
+library(esquisse)
 
 
 knitr::opts_chunk$set(
@@ -27,8 +28,8 @@ scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
 
 vaccine_coverage_df = read_csv(file = "./data/coverage_by_modzcta_adults.csv") %>% 
-  janitor::clean_names()
-
+  janitor::clean_names() %>% 
+  mutate(count_partially_prop = round(count_partially_cumulative/pop_denominator,2), count_Fully_prop = round(count_fully_cumulative/pop_denominator,2), count_1Plus_prop = round(count_1plus_cumulative/pop_denominator,2), count_Additional_prop = round(count_additional_cumulative/pop_denominator,2))
 ```
 
 ### **1. The vaccination coverage in NYC**
@@ -49,8 +50,6 @@ ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_partially_cumulat
 MADE SOME SIMPLE SCATTERPLOTS AND THEIR GGPLOTLY 
 
 ```{r}
-
-
 scatter_ggplot1 = 
 vaccine_coverage_df   %>%
   ggplot(aes(x = pop_denominator, y = count_partially_cumulative, color = borough)) +
@@ -58,13 +57,6 @@ vaccine_coverage_df   %>%
   coord_cartesian()
 
 ggplotly(scatter_ggplot1)
-
-ggplot(vaccine_coverage_df,aes (x = pop_denominator, y = count_partially_cumulative, color = borough)) + geom_point()
-
-
-ggplot(vaccine_coverage_df,aes (x = count_fully_cumulative, fill = borough)) + geom_histogram()
-
-ggplot(vaccine_coverage_df,aes (x = count_partially_cumulative, fill = borough)) + geom_histogram()
 
 ```
 
@@ -250,6 +242,4 @@ income_zip_clean %>%
 
 
 ```
-
-
 
