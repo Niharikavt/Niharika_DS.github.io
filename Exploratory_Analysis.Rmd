@@ -40,7 +40,7 @@ Fully vaccinated:
 ggplot(merged_vaccine_data) +
   aes(
     x = modzcta,
-    y = count_Additional_prop,
+    y = count_Fully_prop,
     colour = borough
   ) +
   geom_point(shape = "circle", size = 1.5) +
@@ -54,6 +54,10 @@ ggplot(merged_vaccine_data) +
   ) +
   theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
+
+This plot shows the proportion of individuals who are fully vaccinated as of March 9th 2022. We would have expected 
+
+
 
 Additional/Booster vaccinated:
 ```{r, echo=FALSE}
