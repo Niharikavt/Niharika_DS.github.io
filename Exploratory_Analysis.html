@@ -384,27 +384,17 @@ div.tocify {
   facet_grid(. ~ BOROUGH)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/plot1-2.png" width="90%" /></p>
-<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
-  geom_smooth(se = FALSE) + 
-  facet_grid(. ~ BOROUGH)</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/plot1-3.png" width="90%" /></p>
 <p>MADE SOME SIMPL SCATTERPLOTS</p>
 <pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_FULLY_CUMULATIVE, color = BOROUGH)) + geom_point()</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-1.png" width="90%" /></p>
 <pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULATIVE, color = BOROUGH)) + geom_point()</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-2.png" width="90%" /></p>
-<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point()</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-3.png" width="90%" /></p>
 <pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-4.png" width="90%" /></p>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-3.png" width="90%" /></p>
 <pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-5.png" width="90%" /></p>
-<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + geom_histogram()</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-6.png" width="90%" /></p>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-1-4.png" width="90%" /></p>
 <p>MADE SOME DENSITY PLOTS WITH A DENISTY BAR BELOW</p>
 <pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + 
   geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;) + geom_rug()</code></pre>
@@ -412,12 +402,22 @@ div.tocify {
 <pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + 
   geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;) + geom_rug()</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-2-2.png" width="90%" /></p>
-<pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + 
-  geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;)+ geom_rug()</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-2-3.png" width="90%" /></p>
 </div>
 <div id="the-booster-coverage-in-nyc" class="section level3">
 <h3><strong>2. The booster coverage in NYC</strong></h3>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ BOROUGH)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-2.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df,aes (x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + geom_histogram()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-3.png" width="90%" /></p>
+<pre class="r"><code>ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + 
+  geom_density(alpha = .4, adjust = .5, color = &quot;blue&quot;)+ geom_rug()</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-4.png" width="90%" /></p>
 </div>
 <div id="vaccination-and-booster-coverage-vs-the-zip-code-data-for-nyc"
 class="section level3">

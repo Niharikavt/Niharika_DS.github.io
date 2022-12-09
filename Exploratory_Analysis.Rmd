@@ -40,9 +40,6 @@ ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULAT
   geom_smooth(se = FALSE) + 
   facet_grid(. ~ BOROUGH)
 
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
-  geom_smooth(se = FALSE) + 
-  facet_grid(. ~ BOROUGH)
 ```
 
 MADE SOME SIMPL SCATTERPLOTS
@@ -52,13 +49,10 @@ ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_FULLY_CUMULATIVE,
 
 ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_PARTIALLY_CUMULATIVE, color = BOROUGH)) + geom_point()
 
-ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point()
 
 ggplot(vaccine_coverage_df,aes (x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
 
 ggplot(vaccine_coverage_df,aes (x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
-
-ggplot(vaccine_coverage_df,aes (x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
 
 ```
 
@@ -71,19 +65,34 @@ ggplot(vaccine_coverage_df, aes(x = COUNT_FULLY_CUMULATIVE, fill = BOROUGH)) +
 ggplot(vaccine_coverage_df, aes(x = COUNT_PARTIALLY_CUMULATIVE, fill = BOROUGH)) + 
   geom_density(alpha = .4, adjust = .5, color = "blue") + geom_rug()
 
-ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + 
-  geom_density(alpha = .4, adjust = .5, color = "blue")+ geom_rug()
-
-
 ```
-
 
 ### **2. The booster coverage in NYC**
 
+```{r}
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point(alpha = .5) +
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ BOROUGH)
+
+ggplot(vaccine_coverage_df,aes (x = POP_DENOMINATOR, y = COUNT_ADDITIONAL_CUMULATIVE, color = BOROUGH)) + geom_point()
+
+ggplot(vaccine_coverage_df,aes (x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + geom_histogram()
+
+ggplot(vaccine_coverage_df, aes(x = COUNT_ADDITIONAL_CUMULATIVE, fill = BOROUGH)) + 
+  geom_density(alpha = .4, adjust = .5, color = "blue")+ geom_rug()
+
+```
+
 ### **3. Vaccination and booster coverage vs The Zip Code data for NYC**
+
+
+
 
 ### **4. The Education Attainment vs vaccination and booster coverage **
 
 ### **5. The Poverty Status vs vaccination and booster coverage**
+
+
+
 
 ### **6. The Median Income vs vaccination and booster coverage**
