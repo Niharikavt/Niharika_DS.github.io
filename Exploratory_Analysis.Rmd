@@ -195,7 +195,7 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = median_fam, y=Count_Fully_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Vaccinated & Median Family Income by Zipcope/Borough", 
+   title = "Proportion Vaccinated & Median Family Income by Borough", 
     x = "Median Family Income", 
     y = "Proportion Vaccinated (Count_Fully_Prop)")
 
@@ -204,7 +204,7 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = median_nonfam, y=Count_Fully_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Vaccinated & Median Nonfamily Income by Zipcope/Borough", 
+   title = "Proportion Vaccinated & Median Nonfamily Income by Borough", 
     x = "Median nonfamily Income", 
     y = "Proportion Vaccinated (Count_Fully_Prop)")
 
@@ -214,7 +214,7 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Fully_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Vaccinated & Median Income by Zipcope/Borough", 
+   title = "Proportion Vaccinated & Median Income by Borough", 
     x = "Median Income (family + nonfamily)", 
     y = "Proportion Vaccinated (Count_Fully_Prop)")
 
@@ -227,7 +227,7 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = median_fam, y=Count_Additional_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Boosted & Median Family Income by Zipcope/Borough", 
+   title = "Proportion Boosted & Median Family Income by Borough", 
     x = "Median Family Income", 
     y = "Proportion Boosted (Count_Additional_Prop)")
 
@@ -236,7 +236,7 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = median_nonfam, y=Count_Additional_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Boosted & Median Nonfamily Income by Zipcope/Borough", 
+   title = "Proportion Boosted & Median Nonfamily Income by Borough", 
     x = "Median nonfamily Income", 
     y = "Proportion Boosted (Count_Additional_Prop)")
 
@@ -244,7 +244,7 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Additional_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Boosted & Median  Income by Zipcope/Borough", 
+   title = "Proportion Boosted & Median  Income by Borough", 
     x = "Median Income (family + nonfamily)", 
     y = "Proportion Boosted (Count_Additional_Prop)")
 
