@@ -104,7 +104,7 @@ joined_dataset_poverty = joined_dataset_poverty %>%
 
 Fully vaccinated:
 
-```{r}
+```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_fully, color = borough)) +
   geom_point()
@@ -112,7 +112,7 @@ joined_dataset_poverty %>%
 
 Partially vaccinated:
 
-```{r}
+```{r,echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_partially, color = borough)) +
   geom_point()
@@ -120,7 +120,7 @@ joined_dataset_poverty %>%
 
 Booster:
 
-```{r}
+```{r,echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_booster, color = borough)) +
   geom_point()
@@ -128,7 +128,7 @@ joined_dataset_poverty %>%
 
 Zipcode and variable: 
 
-```{r}
+```{r,echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = borough, color = borough)) +
   geom_point()
@@ -137,7 +137,7 @@ joined_dataset_poverty %>%
 
 ### **5. The Median Income vs vaccination and booster coverage**
 
-```{r income_data_preprocessing, paged.print=TRUE}
+```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
 incomedata <- read_csv("data/median_income.csv", skip = 1)
 
@@ -159,11 +159,11 @@ vaccine_data$modzcta <- gsub('\\s+', '', vaccine_data$modzcta)
 
 ```
 
-```{r merege-dataset}
+```{r merege-dataset,include=FALSE}
 joined_dataset_income = merge(vaccine_data,incomedata_clean, by = "modzcta", all.x = TRUE)
 ```
 
-```{r}
+```{r,echo=FALSE}
 #Cleaning variables in joined data and changing into the correct variable type 
 
 income_zip_clean <- joined_dataset_income %>%
@@ -177,7 +177,7 @@ str(income_zip_clean)
 
 ```
 
-```{r}
+```{r,echo=FALSE}
 #GGPLOT of Vaccination and family median income and non family median income by borough
 
 income_zip_clean %>%
@@ -210,7 +210,7 @@ income_zip_clean %>%
 
 ```
 
-```{r}
+```{r,echo=FALSE}
 #GGPLOT OF BOOSTER STATUS AND MEDIAN INCOME 
 income_zip_clean %>%
     ggplot() +
