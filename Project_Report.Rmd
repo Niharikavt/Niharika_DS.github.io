@@ -42,7 +42,7 @@ Q4.Vaccination and booster distribution with respect to zip codes in NYC.
 <img src="images/roadblock.jpg">
 
 #### **Roadblock 1.** Zip codes vary! We realized zip codes are not the best or most reliable way to define boundaries and that they were available in a variety of formats. Not all datasets had the MODZTAs available.
-#### **Trouble-shooting** We went ahead and used the modified zipcode tabulated areas of MODZTAs and you can find more information about it linked above.
+#### **Trouble-shooting** We went ahead and used the modified zipcode tabulated areas of MODZTAs and you can find more information about it linked in the data sources below.
 
 
 #### **Roadblock 2.** We were unable to analyze booster uptake and distributions before 9th March 2022. The NYC COVID data only added a column called `count_additional` which was a count of everyone who received a completed FDA-approved primary series plus additional boosters for people aged 18+ in NYC.The data did not clearly record the initial booster rollouts for priority population before it was approved for all above 18.

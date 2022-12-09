@@ -3,8 +3,8 @@ output:
   html_document:
     toc: true
     toc_float: true
-    
 ---
+
 ## **Data Sources**
 We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas.
 
@@ -13,6 +13,8 @@ Details about MODZTA can be found [here](https://nychealth.github.io/covid-maps/
 Along with this we used four datasets from [US Census Bureau](https://data.census.gov) to construct our analysis of socioeconomic and demographic variables.We used the New York State census data and merged them using the NYC MODZTA.
 
 1. [Total population](https://data.census.gov/table?q=P1&tid=DECENNIALPL2020.P1)
+
+`r tot_pop_df = read_csv(file = "./data/tot_pop.csv")`
 
 2. [Education Attainment](https://data.census.gov/table?q=S1501&tid=ACSST1Y2021.S1501)
 
