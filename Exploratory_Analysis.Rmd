@@ -73,6 +73,7 @@ Boosted: The graph below shows the proportion of people fully boosted (y-axis) i
 From this graph, it is interesting to note that the proportion of individuals who received a vaccine across all boroughs ranged from 0-0.75. As before, neighborhoods in Staten Island and the Bronx had a fewer proportion of individuals who received the booster.
 
 ```{r, echo=FALSE}
+boosted_plotly=
 ggplot(merged_vaccine_data) +
   aes(
     x = modzcta,
@@ -88,6 +89,8 @@ ggplot(merged_vaccine_data) +
     subtitle = "(The horizontal line at 1 indicates 100% have received a booster)",
     color = "Boroughs"
   ) + theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
+
+ggplotly(boosted_plotly)
 ```
 
 #### We then sought to explore how vaccination and booster trends varied across different demographic characteristics.
