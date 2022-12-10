@@ -67,7 +67,8 @@ Q4. How did the recent booster rollout look in NYC - the big picture.
 ## **Data** 
 
 ### *Data Sources*
-We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas.
+
+We used city vaccination and booster data from [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data):This repository contains information on COVID-19 vaccination and booster reporting across the five boroughs, updated daily, aggregated at modified zipcode tabulation areas. This data is updated daily.
 
 Details about MODZTA can be found [here](https://nychealth.github.io/covid-maps/modzcta-geo/about.html) and the [GitHub Repository](https://github.com/nychealth/coronavirus-data/tree/master/Geography-resources).
 

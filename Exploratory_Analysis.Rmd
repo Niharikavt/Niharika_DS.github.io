@@ -29,7 +29,7 @@ scale_fill_discrete = scale_fill_viridis_d
 
 ```
 
-## **General Vaccine Data in NYC by Zipcode and Boroughs**
+### **General Vaccine Data in NYC by Zipcode and Boroughs**
 
 We began with a preliminary data exploration of the proportion of individuals who  were fully vaccinated and received boosters across different zipcodes in each borough by 3.09.22 (90 days after the booster approval).
 
@@ -37,7 +37,7 @@ We began with a preliminary data exploration of the proportion of individuals wh
 merged_vaccine_data = read_csv(file="./data/merged_vaccine_data.csv")
 ```
 
-### Fully Vaccinated Individuals by Zipcode and Boroughs:
+#### Fully Vaccinated Individuals by Zipcode and Boroughs:
 
 Fully Vaccinated: The graph below shows the proportion of people fully vaccinated (y-axis) in each zipcode (x-axis). The colors indicate the borough. From this graph we note a few observations:
 
@@ -64,7 +64,7 @@ ggplot(merged_vaccine_data) +
   theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
-### Additional/Booster Vaccinated Individuals by Zipcode and Boroughs:
+#### Additional/Booster Vaccinated Individuals by Zipcode and Boroughs:
 
 Boosted: The graph below shows the proportion of people fully boosted (y-axis) in each zip code (x-axis) with colors indicating the borough. This data was collected as of 3.09.22, 90 days after the booster was approved for individuals 18+.
 
@@ -88,14 +88,16 @@ ggplot(merged_vaccine_data) +
   ) + theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
-## *We then sought to explore how vaccination and booster trends varied across different demographic characteristics.*
+#### We then sought to explore how vaccination and booster trends varied across different demographic characteristics.
 
-## **1.The Education Attainment in NYC by Vaccination Status and Boroughs**
+### **1.The Education Attainment in NYC by Vaccination Status and Boroughs**
+
 ```{r, include=FALSE}
 cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
 ```
 
-### Fully Vaccinated Individuals by Education Status and Age
+#### Fully Vaccinated Individuals by Education Status and Age
+
 ``` {r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
@@ -111,7 +113,8 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(age))
 ```
 
-### Additional/Booster Individuals by Education Status and Age
+#### Additional/Booster Individuals by Education Status and Age
+
 ``` {r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = edu) +
@@ -127,7 +130,8 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(age))
 ```
 
-### Fully Vaccinated Individuals by Education Status and Boroughs
+#### Fully Vaccinated Individuals by Education Status and Boroughs
+
 ```{r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = borough) +
@@ -143,7 +147,8 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(edu))
 ```
 
-### Additional/Booster Individuals by Education Status and Boroughs
+#### Additional/Booster Individuals by Education Status and Boroughs
+
 ```{r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = borough) +
@@ -160,7 +165,7 @@ ggplot(cleaned_edu_booster_dataset) +
 
 ```
 
-## **2. The Median Income vs Vaccination and Booster Coverage**
+### **2. The Median Income vs Vaccination and Booster Coverage**
 
 ```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
@@ -202,7 +207,8 @@ str(income_zip_clean)
 
 ```
 
-### Fully Vaccinated Individuals by Median Household Income and Boroughs
+#### Fully Vaccinated Individuals by Median Household Income and Boroughs
+
 ```{r,echo=FALSE}
 
 #GGPLOT of Vaccination combined median income and non family median income by borough
@@ -218,7 +224,8 @@ income_zip_clean %>%
 
 ```
 
-### Additional/Booster Vaccinated Individuals by Median Household Income and Boroughs
+#### Additional/Booster Vaccinated Individuals by Median Household Income and Boroughs
+
 ```{r,echo=FALSE}
 
 income_zip_clean %>%
@@ -232,7 +239,7 @@ income_zip_clean %>%
 
 ```
 
-## **3. Poverty Status vs Vaccination and Booster Coverage**
+### **3. Proportion of Individuals Below Poverty Level vs Vaccination and Booster Coverage**
 
 ```{r, echo=FALSE}
 data <- read.csv("data/poverty_status.csv", skip = 1) %>%
@@ -277,38 +284,38 @@ joined_dataset_poverty = joined_dataset_poverty %>%
   )
 ```
 
-### Fully Vaccinated Individuals by determined Poverty Status Aged 18+
+#### Fully Vaccinated Individuals Below Poverty Level (Aged 18+)
 ```{r echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_fully, color = borough)) +
   geom_point()+
   labs(
-   title = "Fully Vaccinated Individuals by determined Poverty Status Aged 18+", 
-    x = "Fully Vaccinated Individuals ", 
-    y = "Poverty Status Aged 18+")
+   title = "Fully Vaccinated Individuals Below Poverty Level (Aged 18+)", 
+    x = "Fully Vaccinated Individuals", 
+    y = "Proportion of Individuals Below Poverty level (Aged 18+)")
 
 ```
 
-### Additional/Booster Vaccinated Individuals by determined Poverty Status Aged 18+
+#### Additional/Booster Vaccinated Individuals Below Poverty Level (Aged 18+)
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_booster, color = borough)) +
   geom_point()+
   labs(
-   title = "Additional/Booster Vaccinated Individuals by determined Poverty Status Aged 18+", 
+   title = "Additional/Booster Vaccinated Individuals Below Poverty Level (Aged 18+)", 
     x = "Additional/ Boosted Indidivuals ", 
-    y = "Poverty Status Aged 18+")
+    y = "Proportion of Individuals Below Poverty Status (Aged 18+)")
 
 ```
 
-### Proportion of Adults aged 18+ with determined Poverty Status by Boroughs
+#### Proportion of Adults Below Poverty Level by Boroughs (Aged 18+)
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = borough, color = borough)) +
   geom_point()+
   labs(
-   title = "Proportion of Adults aged 18+ with determined Poverty Status by Boroughs", 
-    x = "Poverty Status Aged 18+ ", 
+   title = "Proportion of Adults Below Poverty Level by Boroughs (Aged 18+) ", 
+    x = "Proportion of Individuals Below Poverty level (Aged 18+) ", 
     y = "Boroughs")
 
 ```
