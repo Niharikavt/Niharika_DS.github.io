@@ -29,13 +29,13 @@ scale_fill_discrete = scale_fill_viridis_d
 
 ```
 
-# **1. The vaccination coverage in NYC by Zipcode and Borough**
+## **1. The Vaccination Coverage in NYC by Zipcode and Boroughs**
 
 ```{r, include=FALSE}
 merged_vaccine_data = read_csv(file="./data/merged_vaccine_data.csv")
 ```
 
-### Fully vaccinated individuals by zipcode and boroughs:
+### Fully Vaccinated Individuals by Zipcode and Boroughs:
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
@@ -47,15 +47,15 @@ ggplot(merged_vaccine_data) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Zip Codes",
-    y = "Proportion Fully Vaccinated",
-    title = "Proportion fully Vaccinated in each Zipcode across Boroughs",
-    subtitle = "(The horizontal line at 1 indicates 100% have received a 2 doses of an FDA-approved primary vaccine series)",
+    y = "Proportion of Fully Vaccinated Individuals",
+    title = "Proportion Fully Vaccinated Individuals in each Zipcode across Boroughs",
+    subtitle = "(The horizontal line at 1 indicates 100% have received 2 doses of an FDA-approved Primary Vaccine series)",
     color = "Boroughs"
   ) +
   theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
-### Additional/Booster vaccinated individuals by zipcode and boroughs:
+### Additional/Booster Vaccinated Individuals by Zipcode and Boroughs:
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
@@ -67,29 +67,27 @@ ggplot(merged_vaccine_data) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Zip Codes",
-    y = "Proportion Boosted",
-    title = "Proportion Boosted in each Zipcode across Boroughs",
+    y = "Proportion of  Booster Vaccinated Individuals",
+    title = "Proportion of Booster Vaccinated Individuals in each Zipcode across Boroughs",
     subtitle = "(The horizontal line at 1 indicates 100% have received a booster)",
     color = "Boroughs"
   ) + theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
-# **2. The Education Attainment in NYC by Vaccination Status and Borough**
-
+## **2. The Education Attainment in NYC by Vaccination Status and Boroughs**
 ```{r, include=FALSE}
 cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
 ```
 
-### Fully Vaccinated Inidividuals by Education Status and Age
-
-``` {r}
+### Fully Vaccinated Individuals by Education Status and Age
+``` {r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
   geom_point(shape = "circle", size = 1.5) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Proportion of Individuals by Education Status",
-    y = "Proportion of Individuals Fully Vaccinated ",
+    y = "Proportion of Fully Vaccinated Individuals ",
     title = "Fully Vaccinated Individuals by Education Status and Age",
     color = "Education Status"
   ) +
@@ -97,9 +95,8 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(age))
 ```
 
-### Additional/Boosted Inidividuals by Education Status and Age
-
-``` {r}
+### Additional/Booster Individuals by Education Status and Age
+``` {r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = edu) +
   geom_point(shape = "circle", size = 1.5) +
@@ -107,16 +104,15 @@ ggplot(cleaned_edu_booster_dataset) +
   labs(
     x = "Proportion of Individuals by Education Status",
     y = "Proportion of Individuals Boosted ",
-    title = "Boosted Individuals by Education Status and Age",
+    title = "Booster Individuals by Education Status and Age",
     color = "Education Status"
   ) +
   theme_minimal() +
   facet_wrap(vars(age))
-
 ```
 
 ### Fully Vaccinated Individuals by Education Status and Boroughs
-```{r}
+```{r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = borough) +
   geom_point(shape = "circle", size = 1.5) +
@@ -129,11 +125,10 @@ ggplot(cleaned_edu_booster_dataset) +
   ) +
   theme_minimal() +
   facet_wrap(vars(edu))
-
 ```
 
-### Additional/Boosted Inidividuals by Education Status and Boroughs
-```{r}
+### Additional/Booster Individuals by Education Status and Boroughs
+```{r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = borough) +
   geom_point(shape = "circle", size = 1.5) +
@@ -141,7 +136,7 @@ ggplot(cleaned_edu_booster_dataset) +
   labs(
     x = "Education Status",
     y = "Proportion of individuals receiving boosters",
-    title = "Additional/Boosted individuals by Education Status and Borough",
+    title = "Additional/Booster individuals by Education Status and Borough",
     color = "Boroughs"
   ) +
   theme_minimal() +
@@ -149,7 +144,7 @@ ggplot(cleaned_edu_booster_dataset) +
 
 ```
 
-### **3. The Median Income vs vaccination and booster coverage**
+## **3. The Median Income vs Vaccination and Booster Coverage**
 
 ```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
@@ -191,6 +186,7 @@ str(income_zip_clean)
 
 ```
 
+### Fully Vaccinated Individuals by Median Household Income and Boroughs
 ```{r,echo=FALSE}
 
 #GGPLOT of Vaccination combined median income and non family median income by borough
@@ -206,6 +202,7 @@ income_zip_clean %>%
 
 ```
 
+### Additional/Booster Vaccinated Individuals by Median Household Income and Boroughs
 ```{r,echo=FALSE}
 
 income_zip_clean %>%
@@ -221,10 +218,7 @@ income_zip_clean %>%
 
 ### **4. Poverty Status vs Vaccination and Booster Coverage**
 
-
-Load and clean poverty data; select data relevant for 18+
-
-```{r}
+```{r, echo=FALSE}
 data <- read.csv("data/poverty_status.csv", skip = 1) %>%
   janitor::clean_names()
 
@@ -236,20 +230,16 @@ dataset_clean = data %>%
 
 ```
 
-Divide "status determined" by "below poverty level" to find proportion
-
-```{r}
+```{r, echo=FALSE}
 dataset_clean = dataset_clean %>% 
   mutate(prop_below_pov_level_18_and_over = below_pov_level_pop_pov_det_18_and_over / total_pop_pov_det_18_and_over)
 ```
 
-Load zipcode data
-
-```{r}
+```{r, echo=FALSE}
 zipcode_data <- read.csv("data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv")
 ```
 
-```{r Load zipcode data}
+```{r Load zipcode data, echo=FALSE}
 vaccine_data <- read.csv("data/coverage_by_modzcta_adults.csv") %>%
   janitor::clean_names() %>%
   mutate(modzcta = as.character(modzcta))
@@ -257,8 +247,6 @@ vaccine_data <- read.csv("data/coverage_by_modzcta_adults.csv") %>%
 vaccine_data$modzcta <- gsub('\\s+', '', vaccine_data$modzcta)
 dataset_clean$modzcta <- gsub('\\s+', '', dataset_clean$modzcta)
 ```
-
-### Join data
 
 ```{r, include=FALSE}
 joined_dataset_poverty = merge(vaccine_data,dataset_clean, by = "modzcta", all.x = TRUE)
@@ -273,25 +261,40 @@ joined_dataset_poverty = joined_dataset_poverty %>%
   )
 ```
 
-Fully vaccinated:
-```{r include=FALSE}
+### Fully Vaccinated Individuals by determined Poverty Status Aged 18+
+```{r echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_fully, color = borough)) +
-  geom_point()
+  geom_point()+
+  labs(
+   title = "Fully Vaccinated Individuals by determined Poverty Status Aged 18+", 
+    x = "Fully Vaccinated Individuals ", 
+    y = "Poverty Status Aged 18+")
+
 ```
 
-Booster:
+### Additional/Booster Vaccinated Individuals by determined Poverty Status Aged 18+
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_booster, color = borough)) +
-  geom_point()
+  geom_point()+
+  labs(
+   title = "Additional/Booster Vaccinated Individuals by determined Poverty Status Aged 18+", 
+    x = "Additional/ Boosted Indidivuals ", 
+    y = "Poverty Status Aged 18+")
+
 ```
 
-Zipcode and variable: 
+### Proportion of Adults aged 18+ with determined Poverty Status by Boroughs
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = borough, color = borough)) +
-  geom_point()
+  geom_point()+
+  labs(
+   title = "Proportion of Adults aged 18+ with determined Poverty Status by Boroughs", 
+    x = "Poverty Status Aged 18+ ", 
+    y = "Boroughs")
+
 ```
 
 

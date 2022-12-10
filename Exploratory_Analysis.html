@@ -374,138 +374,92 @@ div.tocify {
 </div>
 
 
-<div id="the-vaccination-coverage-in-nyc-by-zipcode-and-borough"
-class="section level1">
-<h1><strong>1. The vaccination coverage in NYC by Zipcode and
-Borough</strong></h1>
+<div id="the-vaccination-coverage-in-nyc-by-zipcode-and-boroughs"
+class="section level2">
+<h2><strong>1. The Vaccination Coverage in NYC by Zipcode and
+Boroughs</strong></h2>
 <div id="fully-vaccinated-individuals-by-zipcode-and-boroughs"
 class="section level3">
-<h3>Fully vaccinated individuals by zipcode and boroughs:</h3>
+<h3>Fully Vaccinated Individuals by Zipcode and Boroughs:</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-2-1.png" width="90%" /></p>
 </div>
 <div
 id="additionalbooster-vaccinated-individuals-by-zipcode-and-boroughs"
 class="section level3">
-<h3>Additional/Booster vaccinated individuals by zipcode and
-boroughs:</h3>
+<h3>Additional/Booster Vaccinated Individuals by Zipcode and
+Boroughs:</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
 </div>
 </div>
 <div
-id="the-education-attainment-in-nyc-by-vaccination-status-and-borough"
-class="section level1">
-<h1><strong>2. The Education Attainment in NYC by Vaccination Status and
-Borough</strong></h1>
-<div id="fully-vaccinated-inidividuals-by-education-status-and-age"
+id="the-education-attainment-in-nyc-by-vaccination-status-and-boroughs"
+class="section level2">
+<h2><strong>2. The Education Attainment in NYC by Vaccination Status and
+Boroughs</strong></h2>
+<div id="fully-vaccinated-individuals-by-education-status-and-age"
 class="section level3">
-<h3>Fully Vaccinated Inidividuals by Education Status and Age</h3>
-<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
-  aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
-  geom_point(shape = &quot;circle&quot;, size = 1.5) +
-  scale_color_hue(direction = 1) +
-  labs(
-    x = &quot;Proportion of Individuals by Education Status&quot;,
-    y = &quot;Proportion of Individuals Fully Vaccinated &quot;,
-    title = &quot;Fully Vaccinated Individuals by Education Status and Age&quot;,
-    color = &quot;Education Status&quot;
-  ) +
-  theme_minimal() +
-  facet_wrap(vars(age))</code></pre>
+<h3>Fully Vaccinated Individuals by Education Status and Age</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-5-1.png" width="90%" /></p>
 </div>
-<div id="additionalboosted-inidividuals-by-education-status-and-age"
+<div id="additionalbooster-individuals-by-education-status-and-age"
 class="section level3">
-<h3>Additional/Boosted Inidividuals by Education Status and Age</h3>
-<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
-  aes(x = edu_prop, y = booster_prop, colour = edu) +
-  geom_point(shape = &quot;circle&quot;, size = 1.5) +
-  scale_color_hue(direction = 1) +
-  labs(
-    x = &quot;Proportion of Individuals by Education Status&quot;,
-    y = &quot;Proportion of Individuals Boosted &quot;,
-    title = &quot;Boosted Individuals by Education Status and Age&quot;,
-    color = &quot;Education Status&quot;
-  ) +
-  theme_minimal() +
-  facet_wrap(vars(age))</code></pre>
+<h3>Additional/Booster Individuals by Education Status and Age</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="90%" /></p>
 </div>
 <div id="fully-vaccinated-individuals-by-education-status-and-boroughs"
 class="section level3">
 <h3>Fully Vaccinated Individuals by Education Status and Boroughs</h3>
-<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
-  aes(x = edu_prop, y = fully_vaccinated_prop, colour = borough) +
-  geom_point(shape = &quot;circle&quot;, size = 1.5) +
-  scale_color_hue(direction = 1) +
-  labs(
-    x = &quot;Education Status&quot;,
-    y = &quot;Proportion of individuals fully vaccinated&quot;,
-    title = &quot;Fully vaccinated individuals by Education Status and Borough&quot;,
-    color = &quot;Boroughs&quot;
-  ) +
-  theme_minimal() +
-  facet_wrap(vars(edu))</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
 </div>
-<div
-id="additionalboosted-inidividuals-by-education-status-and-boroughs"
+<div id="additionalbooster-individuals-by-education-status-and-boroughs"
 class="section level3">
-<h3>Additional/Boosted Inidividuals by Education Status and
-Boroughs</h3>
-<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
-  aes(x = edu_prop, y = booster_prop, colour = borough) +
-  geom_point(shape = &quot;circle&quot;, size = 1.5) +
-  scale_color_hue(direction = 1) +
-  labs(
-    x = &quot;Education Status&quot;,
-    y = &quot;Proportion of individuals receiving boosters&quot;,
-    title = &quot;Additional/Boosted individuals by Education Status and Borough&quot;,
-    color = &quot;Boroughs&quot;
-  ) +
-  theme_minimal() +
-  facet_wrap(vars(edu))</code></pre>
+<h3>Additional/Booster Individuals by Education Status and Boroughs</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-8-1.png" width="90%" /></p>
 </div>
+</div>
 <div id="the-median-income-vs-vaccination-and-booster-coverage"
+class="section level2">
+<h2><strong>3. The Median Income vs Vaccination and Booster
+Coverage</strong></h2>
+<div
+id="fully-vaccinated-individuals-by-median-household-income-and-boroughs"
 class="section level3">
-<h3><strong>3. The Median Income vs vaccination and booster
-coverage</strong></h3>
+<h3>Fully Vaccinated Individuals by Median Household Income and
+Boroughs</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-10-1.png" width="90%" /></p>
+</div>
+<div
+id="additionalbooster-vaccinated-individuals-by-median-household-income-and-boroughs"
+class="section level3">
+<h3>Additional/Booster Vaccinated Individuals by Median Household Income
+and Boroughs</h3>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-11-1.png" width="90%" /></p>
 </div>
 <div id="poverty-status-vs-vaccination-and-booster-coverage"
 class="section level3">
 <h3><strong>4. Poverty Status vs Vaccination and Booster
 Coverage</strong></h3>
-<p>Load and clean poverty data; select data relevant for 18+</p>
-<pre class="r"><code>data &lt;- read.csv(&quot;data/poverty_status.csv&quot;, skip = 1) %&gt;%
-  janitor::clean_names()
-
-dataset_clean = data %&gt;% 
-  mutate(modzcta = substr(geographic_area_name,6,11),
-         total_pop_pov_det_18_and_over = estimate_total_population_for_whom_poverty_status_is_determined - estimate_total_population_for_whom_poverty_status_is_determined_age_under_18_years) %&gt;% 
-  mutate(below_pov_level_pop_pov_det_18_and_over = estimate_below_poverty_level_population_for_whom_poverty_status_is_determined - estimate_below_poverty_level_population_for_whom_poverty_status_is_determined_age_under_18_years) %&gt;%
-  select(modzcta, total_pop_pov_det_18_and_over, below_pov_level_pop_pov_det_18_and_over)</code></pre>
-<p>Divide “status determined” by “below poverty level” to find
-proportion</p>
-<pre class="r"><code>dataset_clean = dataset_clean %&gt;% 
-  mutate(prop_below_pov_level_18_and_over = below_pov_level_pop_pov_det_18_and_over / total_pop_pov_det_18_and_over)</code></pre>
-<p>Load zipcode data</p>
-<pre class="r"><code>zipcode_data &lt;- read.csv(&quot;data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv&quot;)</code></pre>
-<pre class="r"><code>vaccine_data &lt;- read.csv(&quot;data/coverage_by_modzcta_adults.csv&quot;) %&gt;%
-  janitor::clean_names() %&gt;%
-  mutate(modzcta = as.character(modzcta))
-
-vaccine_data$modzcta &lt;- gsub(&#39;\\s+&#39;, &#39;&#39;, vaccine_data$modzcta)
-dataset_clean$modzcta &lt;- gsub(&#39;\\s+&#39;, &#39;&#39;, dataset_clean$modzcta)</code></pre>
 </div>
-<div id="join-data" class="section level3">
-<h3>Join data</h3>
-<p>Fully vaccinated:</p>
-<p>Booster:
-<img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-18-1.png" width="90%" /></p>
-<p>Zipcode and variable:
-<img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-19-1.png" width="90%" /></p>
+<div
+id="fully-vaccinated-individuals-by-determined-poverty-status-aged-18"
+class="section level3">
+<h3>Fully Vaccinated Individuals by determined Poverty Status Aged
+18+</h3>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-17-1.png" width="90%" /></p>
+</div>
+<div
+id="additionalbooster-vaccinated-individuals-by-determined-poverty-status-aged-18"
+class="section level3">
+<h3>Additional/Booster Vaccinated Individuals by determined Poverty
+Status Aged 18+</h3>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-18-1.png" width="90%" /></p>
+</div>
+<div
+id="proportion-of-adults-aged-18-with-determined-poverty-status-by-boroughs"
+class="section level3">
+<h3>Proportion of Adults aged 18+ with determined Poverty Status by
+Boroughs</h3>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-19-1.png" width="90%" /></p>
 </div>
 </div>
 
