@@ -413,22 +413,39 @@ class="section level3">
   facet_wrap(vars(age))</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-5-1.png" width="90%" /></p>
 </div>
+<div id="additionalboosted-inidividuals-by-education-status-and-age"
+class="section level3">
+<h3>Additional/Boosted Inidividuals by Education Status and Age</h3>
+<pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
+  aes(x = edu_prop, y = booster_prop, colour = edu) +
+  geom_point(shape = &quot;circle&quot;, size = 1.5) +
+  scale_color_hue(direction = 1) +
+  labs(
+    x = &quot;Proportion of Individuals by Education Status&quot;,
+    y = &quot;Proportion of Individuals Boosted &quot;,
+    title = &quot;Boosted Individuals by Education Status and Age&quot;,
+    color = &quot;Education Status&quot;
+  ) +
+  theme_minimal() +
+  facet_wrap(vars(age))</code></pre>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="90%" /></p>
+</div>
 <div id="fully-vaccinated-individuals-by-education-status-and-boroughs"
 class="section level3">
 <h3>Fully Vaccinated Individuals by Education Status and Boroughs</h3>
 <pre class="r"><code>ggplot(cleaned_edu_booster_dataset) +
-  aes(x = edu_prop, y = booster_prop, colour = borough) +
+  aes(x = edu_prop, y = fully_vaccinated_prop, colour = borough) +
   geom_point(shape = &quot;circle&quot;, size = 1.5) +
   scale_color_hue(direction = 1) +
   labs(
     x = &quot;Education Status&quot;,
-    y = &quot;Proportion of individuals receiving boosters&quot;,
-    title = &quot;Additional/Boosted individuals by Education Status and Borough&quot;,
+    y = &quot;Proportion of individuals fully vaccinated&quot;,
+    title = &quot;Fully vaccinated individuals by Education Status and Borough&quot;,
     color = &quot;Boroughs&quot;
   ) +
   theme_minimal() +
   facet_wrap(vars(edu))</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-6-1.png" width="90%" /></p>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
 </div>
 <div
 id="additionalboosted-inidividuals-by-education-status-and-boroughs"
@@ -447,7 +464,7 @@ Boroughs</h3>
   ) +
   theme_minimal() +
   facet_wrap(vars(edu))</code></pre>
-<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-8-1.png" width="90%" /></p>
 </div>
 </div>
 
