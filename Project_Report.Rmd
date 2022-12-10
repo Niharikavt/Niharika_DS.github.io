@@ -162,20 +162,8 @@ We removed the null values. After cleaning, this dataset contains the following 
 - `median_fam` :median income family
 - `median nonfam` :median income non-family
 
+### **Exploratory Analysis**
 
-
-
-
-
-
-
-
-
-
-
-
-
-## **Exploratory Data Analysis**
 ```{r setup, include = FALSE}
 library (tidyverse)
 library (readxl)
@@ -200,14 +188,24 @@ scale_fill_discrete = scale_fill_viridis_d
 
 ```
 
-## **1. The Vaccination Coverage in NYC by Zipcode and Boroughs**
+#### **General Vaccine Data in NYC**
+
+We began with a preliminary data exploration of the proportion of individuals who  were fully vaccinated and received boosters across different zipcodes in each borough by 3.09.22 (90 days after the booster approval).
 
 ```{r, include=FALSE}
 merged_vaccine_data = read_csv(file="./data/merged_vaccine_data.csv")
 ```
 
-### Fully Vaccinated Individuals by Zipcode and Boroughs:
+#### Fully Vaccinated Individuals by Zipcode and Boroughs:
+
+Fully Vaccinated: The graph below shows the proportion of people fully vaccinated (y-axis) in each zipcode (x-axis). The colors indicate the borough. From this graph we note a few observations:
+
+1. In several neighborhoods the proportion of individuals vaccinated exceeds 1 (the blue line, which represents 100% of the population being completely vaccinated). This indicates that within those neighborhoods individuals received the primary vaccination series more than once.
+
+2. While each borough ranged in the proportion of individuals vaccinated per neighborhood, it appears no neighborhoods in Staten Island and the Bronx had 100% of the population vaccinated. By contrast, in several neighborhoods across Manhattan and Brooklyn, individuals were fully vaccinated more than once.
+
 ```{r, echo=FALSE}
+fully_plotly =
 ggplot(merged_vaccine_data) +
   aes(
     x = modzcta,
@@ -224,10 +222,18 @@ ggplot(merged_vaccine_data) +
     color = "Boroughs"
   ) +
   theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
+
+ggplotly (fully_plotly)
 ```
 
-### Additional/Booster Vaccinated Individuals by Zipcode and Boroughs:
+#### Additional/Boosted Individuals by Zipcode and Boroughs:
+
+Boosted: The graph below shows the proportion of people fully boosted (y-axis) in each zip code (x-axis) with colors indicating the borough. This data was collected as of 3.09.22, 90 days after the booster was approved for individuals 18+.
+
+From this graph, it is interesting to note that the proportion of individuals who received a vaccine across all boroughs ranged from 0-0.75. As before, neighborhoods in Staten Island and the Bronx had a fewer proportion of individuals who received the booster.
+
 ```{r, echo=FALSE}
+boosted_plotly=
 ggplot(merged_vaccine_data) +
   aes(
     x = modzcta,
@@ -238,23 +244,32 @@ ggplot(merged_vaccine_data) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Zip Codes",
-    y = "Proportion of  Booster Vaccinated Individuals",
-    title = "Proportion of Booster Vaccinated Individuals in each Zipcode across Boroughs",
+    y = "Proportion of Boosted Individuals",
+    title = "Proportion of Boosted Individuals in each Zipcode across Boroughs",
     subtitle = "(The horizontal line at 1 indicates 100% have received a booster)",
     color = "Boroughs"
   ) + theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
+
+ggplotly(boosted_plotly)
 ```
 
-## **2. The Education Attainment in NYC by Vaccination Status and Boroughs**
+#### We then sought to explore how vaccination and booster trends varied across different demographic characteristics.
+
+#### **1. Education **
+First, we used an education dataset from the 2020 US census to understand patterns in educational attainment with full vaccination or booster status. In these graphs each dot represents a zip code region. The proportion of individuals with a particular vaccine status is on the y-axis and plotted against the proportion of individuals with a particular education status per zip code is on the x-axis. 
+
 ```{r, include=FALSE}
 cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
 ```
 
-### Fully Vaccinated Individuals by Education Status and Age
+#### Fully Vaccinated Individuals by Education Status and Age
+
+Plot 1a below shows the proportion of fully vaccinated individuals by education status (the colors), split across age. We observe that while individuals across education receive full vaccinations, the communities with higher proportions of individuals with above a high school education tend to seek multiple rounds of full vaccinations. 
+
 ``` {r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Proportion of Individuals by Education Status",
@@ -266,11 +281,14 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(age))
 ```
 
-### Additional/Booster Individuals by Education Status and Age
+#### Additional/Boosted Individuals by Education Status and Age
+
+Plot 1b shows the proportion of boosted individuals by education status (the colors), split across age. Overall we observe that in neighborhoods where there is a higher proportion of individuals with above a high school education, a higher proportion of individuals appeared to receive a booster within the first 90 days. 
+
 ``` {r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = edu) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Proportion of Individuals by Education Status",
@@ -282,11 +300,20 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(age))
 ```
 
-### Fully Vaccinated Individuals by Education Status and Boroughs
+Next we explored how education and vaccination status might vary across boroughs. Overall, Manhattan appears to have neighborhoods with higher proportions of college educated individuals. Neighborhoods in Staten Island and the Bronx had higher proportions of high school and some college education. 
+
+As before, the proportion of individuals with a particular vaccine status (y-axis) is plotted against the proportion of individuals with a particular education status (x-axis) in each zip code. The color indicates the borough. 
+
+#### Fully Vaccinated Individuals by Education Status and Boroughs
+
+Plot 1c shows the proportion of fully vaccinated individuals by boroughs (color), spilt by their education status. While neighborhoods in all boroughs had full vaccination rates, neighborhoods where individuals who received multiple rounds of full vaccines tended to in Manhattan neighborhoods with a highly educated neighborhood composition. Communities in the Bronx and Staten Island had higher proportions of high school and some college education and seemed in the mid range for receiving full vaccinations. 
+
+Interestingly, neighborhoods with the lowest proportion of individuals who received full vaccinations were in Brooklyn and Queens. These communities appear to contain a relatively even mix of individuals across the spectrum of education experience.
+
 ```{r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = borough) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Education Status",
@@ -298,11 +325,14 @@ ggplot(cleaned_edu_booster_dataset) +
   facet_wrap(vars(edu))
 ```
 
-### Additional/Booster Individuals by Education Status and Boroughs
+#### Additional/Boosted Individuals by Education Status and Boroughs
+
+Plot 1d shows the proportion of boosted individuals by boroughs (color), spilt by their education status. Based on these graphs, it appears that across all boroughs neighborhoods with educational attainment had a greater proportion of individuals receiving the booster. As before, Brooklyn and Queens had both the most highly boosted and least boosted neighborhoods in the city. 
+
 ```{r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = borough) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Education Status",
@@ -315,7 +345,11 @@ ggplot(cleaned_edu_booster_dataset) +
 
 ```
 
-## **3. The Median Income vs Vaccination and Booster Coverage**
+#### **2. Median Income**
+We then used a median income dataset from the 2020 US census to understand the relationship between median income and full vaccination or booster status. In these graphs each dot represents a zip code region. The proportion of individuals with a particular vaccine status (y-axis) is plotted against the median income (x-axis). Each color indicates the borough.  
+
+Generally, we note baseline differences in median income across boroughs with the neighborhoods in the Bronx on the lowest end of median income, and neighborhoods in Manhattan on the highest end of median income. 
+
 
 ```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
@@ -357,12 +391,16 @@ str(income_zip_clean)
 
 ```
 
-### Fully Vaccinated Individuals by Median Household Income and Boroughs
+#### Fully Vaccinated Individuals by Median Household Income and Boroughs
+
+Plot 2a shows the proportion of fully vaccinated individuals by median income in each zip code region (colors represent boroughs). We observe that neighborhoods with the highest median incomes tend to have higher proportions of fully vaccinated individuals, and indeed higher proportions of individuals who received more than one round of the COVID Vaccine.
+
 ```{r,echo=FALSE}
 
 #GGPLOT of Vaccination combined median income and non family median income by borough
 
-income_zip_clean %>%
+fullyinc_plotly=
+  income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Fully_prop, color=borough), alpha = 0.5)+
   labs(
@@ -370,12 +408,16 @@ income_zip_clean %>%
     x = "Median Household Income", 
     y = "Proportion Vaccinated (Count_Fully_Prop)")
 
-
+ggplotly(fullyinc_plotly)
 ```
 
-### Additional/Booster Vaccinated Individuals by Median Household Income and Boroughs
+#### Additional/Boosted Individuals by Median Household Income and Boroughs
+
+Plot 2b shows the proportion of boosted individuals by median income in each zip code region (colors represent boroughs) after 90 days of boosters being approved for 18+. In this graph, possible associations between median income and the proportion boosted become even more pronounced; higher median income appears associated with a higher proportion of the population who received the booster. 
+
 ```{r,echo=FALSE}
 
+boostedinc_plotly =
 income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Additional_prop, color=borough), alpha = 0.5)+
@@ -384,10 +426,11 @@ income_zip_clean %>%
     x = "Median Household Income ", 
     y = "Proportion Boosted (Count_Additional_Prop)")
 
+ggplotly(boostedinc_plotly)
 
 ```
 
-### **4. Poverty Status vs Vaccination and Booster Coverage**
+#### **3. Poverty Level**
 
 ```{r, echo=FALSE}
 data <- read.csv("data/poverty_status.csv", skip = 1) %>%
@@ -432,46 +475,49 @@ joined_dataset_poverty = joined_dataset_poverty %>%
   )
 ```
 
-### Fully Vaccinated Individuals by determined Poverty Status Aged 18+
+#### Fully Vaccinated Individuals Below Poverty Level (Aged 18+)
+Plot 3a: This plot shows the proportion of the population over 18 years old that is fully vaccinated by zip code in New York City on the Y axis, and proportion of the population above 18 years old that is below poverty level for whom poverty status is determined in New York City on the X axis. In general, we do not see a lot of variation. However, we do see some outliers. Some Manhattan zip codes have a higher proportion of people fully vaccinated and a lower proportion of individuals below the poverty level. Whereas some boroughs have a higher proportion of individuals under the poverty level and lower proportions of people fully vaccinated, such as in the Bronx and Brooklyn, compared to Queens and Staten Island.
+
 ```{r echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_fully, color = borough)) +
   geom_point()+
   labs(
-   title = "Fully Vaccinated Individuals by determined Poverty Status Aged 18+", 
-    x = "Fully Vaccinated Individuals ", 
-    y = "Poverty Status Aged 18+")
+   title = "Fully Vaccinated Individuals Below Poverty Level (Aged 18+)", 
+    x = "Proportion of Individuals Below Poverty level (Aged 18+)Fully Vaccinated Individuals", 
+    y = "Fully Vaccinated Individuals")
 
 ```
 
-### Additional/Booster Vaccinated Individuals by determined Poverty Status Aged 18+
+#### Additional/Booster Vaccinated Individuals Below Poverty Level (Aged 18+)
+
+Plot 3b: This plot shows the proportion of the population over 18 years old that has received a booster on the Y axis, and the proportion of the population above 18 years old that is below poverty level for whom poverty status is determined on the X axis. We see much more variation with this plot. There is a lower proportion of individuals in Brooklyn and the Bronx who have received a booster, and a lower proportion of individuals in Staten Island who have received a booster, but with a lower proportion of individuals below poverty level. Additionally, several zip codes in Queens and Manhattan have a higher proportion of individuals who have received the booster.
+
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_booster, color = borough)) +
   geom_point()+
   labs(
-   title = "Additional/Booster Vaccinated Individuals by determined Poverty Status Aged 18+", 
-    x = "Additional/ Boosted Indidivuals ", 
-    y = "Poverty Status Aged 18+")
+   title = "Additional/Booster Vaccinated Individuals Below Poverty Level (Aged 18+)", 
+    x = "Proportion of Individuals Below Poverty Status (Aged 18+)Additional/ Boosted Indidivuals ", 
+    y = "Additional/ Boosted Individuals")
 
 ```
 
-### Proportion of Adults aged 18+ with determined Poverty Status by Boroughs
+#### Proportion of Adults Below Poverty Level by Boroughs (Aged 18+)
+
+Plot 3c: This plot shows the proportion of the population above 18 years old that is below poverty level for whom poverty status is determined by borough zip code. The Bronx has the zipcode with the highest proportion below the poverty line, whereas Manhattan has the lowest.
+
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = borough, color = borough)) +
   geom_point()+
   labs(
-   title = "Proportion of Adults aged 18+ with determined Poverty Status by Boroughs", 
-    x = "Poverty Status Aged 18+ ", 
+   title = "Proportion of Adults Below Poverty Level by Boroughs (Aged 18+) ", 
+    x = "Proportion of Individuals Below Poverty level (Aged 18+) ", 
     y = "Boroughs")
 
 ```
-
-
-
-
-
 
 ## **Discussion**
 
