@@ -90,6 +90,8 @@ ggplot(merged_vaccine_data) +
 #### We then sought to explore how vaccination and booster trends varied across different demographic characteristics.
 
 ### **1. The Education Attainment in NYC by Vaccination Status and Boroughs**
+First, we used an education dataset from the 2020 US census to understand patterns in educational attainment with full vaccination or booster status. In these graphs each dot represents a zip code region. The proportion of individuals with a particular vaccine status is on the y-axis and plotted against the proportion of individuals with a particular education status per zip code is on the x-axis. 
+
 
 ```{r, include=FALSE}
 cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
@@ -290,8 +292,8 @@ joined_dataset_poverty %>%
   geom_point()+
   labs(
    title = "Fully Vaccinated Individuals Below Poverty Level (Aged 18+)", 
-    x = "Fully Vaccinated Individuals", 
-    y = "Proportion of Individuals Below Poverty level (Aged 18+)")
+    x = "Proportion of Individuals Below Poverty level (Aged 18+)Fully Vaccinated Individuals", 
+    y = "Fully Vaccinated Individuals")
 
 ```
 
@@ -302,8 +304,8 @@ joined_dataset_poverty %>%
   geom_point()+
   labs(
    title = "Additional/Booster Vaccinated Individuals Below Poverty Level (Aged 18+)", 
-    x = "Additional/ Boosted Indidivuals ", 
-    y = "Proportion of Individuals Below Poverty Status (Aged 18+)")
+    x = "Proportion of Individuals Below Poverty Status (Aged 18+)Additional/ Boosted Indidivuals ", 
+    y = "Additional/ Boosted Individuals")
 
 ```
 

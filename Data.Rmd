@@ -9,7 +9,7 @@ output:
 
 #### **1. The vaccination coverage and booster data in NYC**
 
-We used [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data).
+We used city vaccination and booster data from [NYC Department of Health Coronavirus Data website](https://www.nyc.gov/site/doh/covid/covid-19-data.page) and [GitHub Data Repository](https://github.com/nychealth/coronavirus-data).This data is updated daily
 
 #### **2. The Zip Code data for NYC**
 
@@ -86,7 +86,6 @@ We removed the null values. After cleaning, this dataset contains the following 
 - `age` : Under 65 and Above 65
 - `edu_prop`
 
-
 #### **5. The Poverty Status **
 
 Neighborhood poverty is the estimated proportion of the population 18 years and older below the Federal Poverty Level for whom poverty status is determined by ZIP code, per the 2014-2018 American Community Survey.
@@ -98,13 +97,10 @@ After data cleaning we had the following variables:
 - `Below_pov_level_pop_pov_det_18_and_over`: Estimate population 18+ below poverty level for whom poverty status is determined
 - `Prop_below_pov_level_18_and_over`: Estimate proportion below poverty level for whom poverty status is determined 18+
 
-
 #### **6. The Median Income **
 
 We removed the null values. After cleaning, this dataset contains the following -
 
-
 - `median_fam` :median income family
 - `median nonfam` :median income non-family
-
 
