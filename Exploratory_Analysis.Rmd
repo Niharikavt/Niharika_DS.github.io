@@ -1,5 +1,4 @@
 ---
-title: "Exploratory Analysis"
 output: 
   html_document:
     toc: true
