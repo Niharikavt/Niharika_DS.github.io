@@ -7,7 +7,9 @@ output:
 
 ### **Discussion**
 
-In this data investigation, we explored COVID vaccination and booster trends in NYC as of March 9th, 2022 (approximately 90 days after the booster was approved for all individuals aged 18 and above). We specifically explored patterns between the proportion of individuals vaccinated or boosted in NYC neighborhoods and the following demographic variables: education, median income, and poverty status.
+In this data investigation, we explored COVID vaccination and booster trends in NYC as of March 9th, 2022 (approximately 90 days after the booster was approved for all individuals aged 18 and above). We specifically explored patterns between the proportion of individuals vaccinated or boosted in NYC neighborhoods and the following demographic variables: education, median income, and poverty status. 
+
+<br>
 
 #### **Key Findings vs. Expectations**
 We anticipated observing a higher vaccination rate in more affluent boroughs such as Manhattan. We noted that Staten Island and the Bronx had the lowest vaccination completion rates among all boroughs, with more than 2 doses of the initial series seen in Manhattan. 
@@ -22,6 +24,8 @@ To look at economic background in a different lens, we compared rates of adult v
 
 As boosters are optional preventative care, we hypothesized that neighborhoods with higher poverty status would have lower booster rates. This expectation held true based on the data. We noticed that there was an inverse relationship between rate of poverty and completion of boosted vaccination shots across NYC. One exception was Staten Island where despite low poverty rates relative to other boroughs, booster rates were low as well. 
 
+<br>
+
 #### **What insights into the data did we make?**
 Given our observation of the data, we were curious if education levels, access to vaccination, or socioeconomic status was influential in the lower booster rates seen in the Bronx and Staten Island.
 
@@ -30,6 +34,8 @@ Interestingly, regardless of the education status, booster immunization was cons
 In all boroughs except for Staten Island, we noted that economic background (as portrayed by median household income and poverty rate) was not associated with completion of the original vaccine series, but related to receiving boosters among adults.
 
 Future analyses can examine factors that may drive lower booster rates among communities. Such factors may consist of both infrastructure barriers (access to subways, pharmacies, clinics) as well as psychosocial factors (attitudes towards vaccines, health education, personal COVID history).
+
+<br>
 
 #### **Recommendations for further Research and Analysis of this topic.**
 
@@ -44,7 +50,4 @@ Future analyses can examine factors that may drive lower booster rates among com
 5. Explore other psychosocial variables (e.g. vaccine attitudes, political affiliation, health literacy) to understand differences across boroughs and neighborhoods. 
 
 6. Investigate how vaccination trends differ among the pediatric population compared to adults.
-
-
-
 
