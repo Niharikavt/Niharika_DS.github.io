@@ -307,6 +307,8 @@ joined_dataset_poverty = joined_dataset_poverty %>%
 ```
 
 #### Fully Vaccinated Individuals Below Poverty Level (Aged 18+)
+Plot 3a: This plot shows the proportion of the population over 18 years old that is fully vaccinated by zip code in New York City on the Y axis, and proportion of the population above 18 years old that is below poverty level for whom poverty status is determined in New York City on the X axis. In general, we do not see a lot of variation. However, we do see some outliers. Some Manhattan zip codes have a higher proportion of people fully vaccinated and a lower proportion of individuals below the poverty level. Whereas some boroughs have a higher proportion of individuals under the poverty level and lower proportions of people fully vaccinated, such as in the Bronx and Brooklyn, compared to Queens and Staten Island.
+
 ```{r echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_fully, color = borough)) +
@@ -319,6 +321,9 @@ joined_dataset_poverty %>%
 ```
 
 #### Additional/Booster Vaccinated Individuals Below Poverty Level (Aged 18+)
+
+Plot 3b: This plot shows the proportion of the population over 18 years old that has received a booster on the Y axis, and the proportion of the population above 18 years old that is below poverty level for whom poverty status is determined on the X axis. We see much more variation with this plot. There is a lower proportion of individuals in Brooklyn and the Bronx who have received a booster, and a lower proportion of individuals in Staten Island who have received a booster, but with a lower proportion of individuals below poverty level. Additionally, several zip codes in Queens and Manhattan have a higher proportion of individuals who have received the booster.
+
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_booster, color = borough)) +
@@ -331,6 +336,9 @@ joined_dataset_poverty %>%
 ```
 
 #### Proportion of Adults Below Poverty Level by Boroughs (Aged 18+)
+
+Plot 3c: This plot shows the proportion of the population above 18 years old that is below poverty level for whom poverty status is determined by borough zip code. The Bronx has the zipcode with the highest proportion below the poverty line, whereas Manhattan has the lowest.
+
 ```{r, echo=FALSE}
 joined_dataset_poverty %>% 
   ggplot(aes(x = prop_below_pov_level_18_and_over, y = borough, color = borough)) +
