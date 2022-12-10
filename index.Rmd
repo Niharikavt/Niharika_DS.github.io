@@ -38,7 +38,7 @@ Given these reports, we used citywide data from 90 days after individuals above 
 - Analyses of various geographic and socioeconomic factors of interest in NYC.
 - A closer look at the various demographic, socioeconomic and geographic factors affecting vaccination and booster distribution and uptake across NYC.
 - A full report detailing our process [Project Report](file:///Users/niharikatelrandhe/Desktop/P8105%20-%20Data%20Science%201/Niharika_DS.github.io/Project_Report.html)
-- A screencast walking you trought this website available on [Youtube](https://www.youtube.com/watch?v=iEzcRIZrdyk)
+- A screencast walking you through this website available on [Youtube](https://www.youtube.com/watch?v=iEzcRIZrdyk)
 - Our raw data and analyses can be found on this [GitHub](https://github.com/brittshea/p8105_finalproject_fall2022)
 
 Visualizations and analyses performed using R (v4.0.3) and RStudio (v1.3.1073).
