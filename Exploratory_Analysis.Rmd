@@ -45,6 +45,7 @@ Fully Vaccinated: The graph below shows the proportion of people fully vaccinate
 2. While each borough ranged in the proportion of individuals vaccinated per neighborhood, it appears no neighborhoods in Staten Island and the Bronx had 100% of the population vaccinated. By contrast, in several neighborhoods across Manhattan and Brooklyn, individuals were fully vaccinated more than once.
 
 ```{r, echo=FALSE}
+fully_plotly =
 ggplot(merged_vaccine_data) +
   aes(
     x = modzcta,
@@ -61,6 +62,8 @@ ggplot(merged_vaccine_data) +
     color = "Boroughs"
   ) +
   theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
+
+ggplotly (fully_plotly)
 ```
 
 #### Additional/Boosted Individuals by Zipcode and Boroughs:
