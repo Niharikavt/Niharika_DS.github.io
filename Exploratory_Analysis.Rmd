@@ -109,7 +109,7 @@ Plot 1a below shows the proportion of fully vaccinated individuals by education 
 ``` {r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = edu) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Proportion of Individuals by Education Status",
@@ -128,7 +128,7 @@ Plot 1b shows the proportion of boosted individuals by education status (the col
 ``` {r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = edu) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Proportion of Individuals by Education Status",
@@ -153,7 +153,7 @@ Interestingly, neighborhoods with the lowest proportion of individuals who recei
 ```{r, echo = FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = fully_vaccinated_prop, colour = borough) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Education Status",
@@ -172,7 +172,7 @@ Plot 1d shows the proportion of boosted individuals by boroughs (color), spilt b
 ```{r, echo=FALSE}
 ggplot(cleaned_edu_booster_dataset) +
   aes(x = edu_prop, y = booster_prop, colour = borough) +
-  geom_point(shape = "circle", size = 1.5) +
+  geom_point(shape = "circle", size = 1) +
   scale_color_hue(direction = 1) +
   labs(
     x = "Education Status",
