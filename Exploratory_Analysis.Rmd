@@ -232,7 +232,7 @@ income_zip_clean %>%
 
 ```
 
-### **3. Poverty Status vs Vaccination and Booster Coverage**
+## **3. Poverty Status vs Vaccination and Booster Coverage**
 
 ```{r, echo=FALSE}
 data <- read.csv("data/poverty_status.csv", skip = 1) %>%
