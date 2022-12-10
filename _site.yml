@@ -12,7 +12,7 @@ navbar:
     - text: "Project Report"
       href: Project_Report.html
     - icon: fa-brands fa-youtube
-      href: 
+      href: https://www.youtube.com/watch?v=iEzcRIZrdyk 
     - icon: fa-github fa-lg
       href: https://github.com/brittshea/p8105_finalproject_fall2022
     - icon: fa-github fa-lg
