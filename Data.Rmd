@@ -70,17 +70,21 @@ After data cleaning, we had the following variables in out dataset:
 
 #### **3. The Total Population ** 
 
-We removed the null values. After cleaning, this dataset contains the following -
+We removed the column that only included null values using the select function. After using `janitor` package to clean the data, the `geo_id` census columns were modified as a string, and mutated into a new `zip code` column.
 
-- `GEO_ID` : Geography
-- `Name`: Geographic Area Name
-- `P001001` : Total
+- `geo_id` : census code for each zipcode
+- `population`: total population based on census in zipcode
+- `zip_code` : associated population zipcode
 
 #### **4. The Education Attainment **
 
 We removed the null values. After cleaning, this dataset contains the following -
 
--
+- `count_age_edu`
+- `edu_count`
+- `edu`
+- `age` : Under 65 and Above 65
+- `edu_prop`
 
 
 #### **5. The Poverty Status **
@@ -88,13 +92,15 @@ Neighborhood poverty is the percent of a ZIP code's population living below the 
 
 After data cleaning we had the following variables -
 
-- 
-
+-
+-
 
 #### **6. The Median Income **
 
 We removed the null values. After cleaning, this dataset contains the following -
 
-- 
+
+- `median_fam` :median income family
+- `median nonfam` :median income non-family
 
 

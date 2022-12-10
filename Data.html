@@ -504,12 +504,15 @@ dataset:</p>
 </div>
 <div id="the-total-population-1" class="section level4">
 <h4><strong>3. The Total Population </strong></h4>
-<p>We removed the null values. After cleaning, this dataset contains the
-following -</p>
+<p>We removed the column that only included null values using the select
+function. After using <code>janitor</code> package to clean the data,
+the <code>geo_id</code> census columns were modified as a string, and
+mutated into a new <code>zip code</code> column.</p>
 <ul>
-<li><code>GEO_ID</code> : Geography</li>
-<li><code>Name</code>: Geographic Area Name</li>
-<li><code>P001001</code> : Total</li>
+<li><code>geo_id</code> : census code for each zipcode</li>
+<li><code>population</code>: total population based on census in
+zipcode</li>
+<li><code>zip_code</code> : associated population zipcode</li>
 </ul>
 </div>
 <div id="the-education-attainment-1" class="section level4">
@@ -517,7 +520,11 @@ following -</p>
 <p>We removed the null values. After cleaning, this dataset contains the
 following -</p>
 <ul>
-<li></li>
+<li><code>count_age_edu</code></li>
+<li><code>edu_count</code></li>
+<li><code>edu</code></li>
+<li><code>age</code> : Under 65 and Above 65</li>
+<li><code>edu_prop</code></li>
 </ul>
 </div>
 <div id="the-poverty-status" class="section level4">
@@ -528,6 +535,7 @@ Survey.</p>
 <p>After data cleaning we had the following variables -</p>
 <ul>
 <li></li>
+<li></li>
 </ul>
 </div>
 <div id="the-median-income" class="section level4">
@@ -535,7 +543,8 @@ Survey.</p>
 <p>We removed the null values. After cleaning, this dataset contains the
 following -</p>
 <ul>
-<li></li>
+<li><code>median_fam</code> :median income family</li>
+<li><code>median nonfam</code> :median income non-family</li>
 </ul>
 </div>
 </div>
