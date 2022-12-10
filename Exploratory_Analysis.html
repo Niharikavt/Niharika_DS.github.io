@@ -466,6 +466,47 @@ Boroughs</h3>
   facet_wrap(vars(edu))</code></pre>
 <p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-8-1.png" width="90%" /></p>
 </div>
+<div id="the-median-income-vs-vaccination-and-booster-coverage"
+class="section level3">
+<h3><strong>3. The Median Income vs vaccination and booster
+coverage</strong></h3>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-10-1.png" width="90%" /></p>
+<p><img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-11-1.png" width="90%" /></p>
+</div>
+<div id="poverty-status-vs-vaccination-and-booster-coverage"
+class="section level3">
+<h3><strong>4. Poverty Status vs Vaccination and Booster
+Coverage</strong></h3>
+<p>Load and clean poverty data; select data relevant for 18+</p>
+<pre class="r"><code>data &lt;- read.csv(&quot;data/poverty_status.csv&quot;, skip = 1) %&gt;%
+  janitor::clean_names()
+
+dataset_clean = data %&gt;% 
+  mutate(modzcta = substr(geographic_area_name,6,11),
+         total_pop_pov_det_18_and_over = estimate_total_population_for_whom_poverty_status_is_determined - estimate_total_population_for_whom_poverty_status_is_determined_age_under_18_years) %&gt;% 
+  mutate(below_pov_level_pop_pov_det_18_and_over = estimate_below_poverty_level_population_for_whom_poverty_status_is_determined - estimate_below_poverty_level_population_for_whom_poverty_status_is_determined_age_under_18_years) %&gt;%
+  select(modzcta, total_pop_pov_det_18_and_over, below_pov_level_pop_pov_det_18_and_over)</code></pre>
+<p>Divide “status determined” by “below poverty level” to find
+proportion</p>
+<pre class="r"><code>dataset_clean = dataset_clean %&gt;% 
+  mutate(prop_below_pov_level_18_and_over = below_pov_level_pop_pov_det_18_and_over / total_pop_pov_det_18_and_over)</code></pre>
+<p>Load zipcode data</p>
+<pre class="r"><code>zipcode_data &lt;- read.csv(&quot;data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv&quot;)</code></pre>
+<pre class="r"><code>vaccine_data &lt;- read.csv(&quot;data/coverage_by_modzcta_adults.csv&quot;) %&gt;%
+  janitor::clean_names() %&gt;%
+  mutate(modzcta = as.character(modzcta))
+
+vaccine_data$modzcta &lt;- gsub(&#39;\\s+&#39;, &#39;&#39;, vaccine_data$modzcta)
+dataset_clean$modzcta &lt;- gsub(&#39;\\s+&#39;, &#39;&#39;, dataset_clean$modzcta)</code></pre>
+</div>
+<div id="join-data" class="section level3">
+<h3>Join data</h3>
+<p>Fully vaccinated:</p>
+<p>Booster:
+<img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-18-1.png" width="90%" /></p>
+<p>Zipcode and variable:
+<img src="Exploratory_Analysis_files/figure-html/unnamed-chunk-19-1.png" width="90%" /></p>
+</div>
 </div>
 
 

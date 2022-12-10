@@ -149,7 +149,7 @@ ggplot(cleaned_edu_booster_dataset) +
 
 ```
 
-### **5. The Median Income vs vaccination and booster coverage**
+### **3. The Median Income vs vaccination and booster coverage**
 
 ```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
@@ -177,7 +177,7 @@ vaccine_data$modzcta <- gsub('\\s+', '', vaccine_data$modzcta)
 joined_dataset_income = merge(vaccine_data,incomedata_clean, by = "modzcta", all.x = TRUE)
 ```
 
-```{r,echo=FALSE}
+```{r,echo=FALSE, include = FALSE}
 #Cleaning variables in joined data and changing into the correct variable type 
 
 income_zip_clean <- joined_dataset_income %>%
@@ -192,24 +192,6 @@ str(income_zip_clean)
 ```
 
 ```{r,echo=FALSE}
-#GGPLOT of Vaccination and family median income and non family median income by borough
-
-income_zip_clean %>%
-    ggplot() +
-    geom_point(aes(x = median_fam, y=Count_Fully_prop, color=borough), alpha = 0.5)+
-  labs(
-   title = "Proportion Vaccinated & Median Family Income by Borough", 
-    x = "Median Family Income", 
-    y = "Proportion Vaccinated (Count_Fully_Prop)")
-
-#GGPLOT of Vaccination and nonfamily median income and non family median income by borough
-income_zip_clean %>%
-    ggplot() +
-    geom_point(aes(x = median_nonfam, y=Count_Fully_prop, color=borough), alpha = 0.5)+
-  labs(
-   title = "Proportion Vaccinated & Median Nonfamily Income by Borough", 
-    x = "Median nonfamily Income", 
-    y = "Proportion Vaccinated (Count_Fully_Prop)")
 
 #GGPLOT of Vaccination combined median income and non family median income by borough
 
@@ -217,41 +199,99 @@ income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Fully_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Vaccinated & Median Income by Borough", 
-    x = "Median Income (family + nonfamily)", 
+   title = "Proportion Vaccinated & Median Household Income by Borough", 
+    x = "Median Household Income", 
     y = "Proportion Vaccinated (Count_Fully_Prop)")
 
 
 ```
 
 ```{r,echo=FALSE}
-#GGPLOT OF BOOSTER STATUS AND MEDIAN INCOME 
-income_zip_clean %>%
-    ggplot() +
-    geom_point(aes(x = median_fam, y=Count_Additional_prop, color=borough), alpha = 0.5)+
-  labs(
-   title = "Proportion Boosted & Median Family Income by Borough", 
-    x = "Median Family Income", 
-    y = "Proportion Boosted (Count_Additional_Prop)")
-
-
-income_zip_clean %>%
-    ggplot() +
-    geom_point(aes(x = median_nonfam, y=Count_Additional_prop, color=borough), alpha = 0.5)+
-  labs(
-   title = "Proportion Boosted & Median Nonfamily Income by Borough", 
-    x = "Median nonfamily Income", 
-    y = "Proportion Boosted (Count_Additional_Prop)")
 
 income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Additional_prop, color=borough), alpha = 0.5)+
   labs(
-   title = "Proportion Boosted & Median  Income by Borough", 
-    x = "Median Income (family + nonfamily)", 
+   title = "Proportion Boosted & Median Household Income by Borough", 
+    x = "Median Household Income ", 
     y = "Proportion Boosted (Count_Additional_Prop)")
 
 
+```
+
+### **4. Poverty Status vs Vaccination and Booster Coverage**
+
+
+Load and clean poverty data; select data relevant for 18+
+
+```{r}
+data <- read.csv("data/poverty_status.csv", skip = 1) %>%
+  janitor::clean_names()
+
+dataset_clean = data %>% 
+  mutate(modzcta = substr(geographic_area_name,6,11),
+         total_pop_pov_det_18_and_over = estimate_total_population_for_whom_poverty_status_is_determined - estimate_total_population_for_whom_poverty_status_is_determined_age_under_18_years) %>% 
+  mutate(below_pov_level_pop_pov_det_18_and_over = estimate_below_poverty_level_population_for_whom_poverty_status_is_determined - estimate_below_poverty_level_population_for_whom_poverty_status_is_determined_age_under_18_years) %>%
+  select(modzcta, total_pop_pov_det_18_and_over, below_pov_level_pop_pov_det_18_and_over)
+
+```
+
+Divide "status determined" by "below poverty level" to find proportion
+
+```{r}
+dataset_clean = dataset_clean %>% 
+  mutate(prop_below_pov_level_18_and_over = below_pov_level_pop_pov_det_18_and_over / total_pop_pov_det_18_and_over)
+```
+
+Load zipcode data
+
+```{r}
+zipcode_data <- read.csv("data/Modified_Zip_Code_Tabulation_Areas__MODZCTA_.csv")
+```
+
+```{r Load zipcode data}
+vaccine_data <- read.csv("data/coverage_by_modzcta_adults.csv") %>%
+  janitor::clean_names() %>%
+  mutate(modzcta = as.character(modzcta))
+
+vaccine_data$modzcta <- gsub('\\s+', '', vaccine_data$modzcta)
+dataset_clean$modzcta <- gsub('\\s+', '', dataset_clean$modzcta)
+```
+
+### Join data
+
+```{r, include=FALSE}
+joined_dataset_poverty = merge(vaccine_data,dataset_clean, by = "modzcta", all.x = TRUE)
+```
+
+```{r, include = FALSE}
+joined_dataset_poverty = joined_dataset_poverty %>% 
+  mutate(
+  prop_partially = count_partially_cumulative / pop_denominator,
+    prop_fully = count_fully_cumulative / pop_denominator,
+    prop_booster = count_additional_cumulative / pop_denominator
+  )
+```
+
+Fully vaccinated:
+```{r include=FALSE}
+joined_dataset_poverty %>% 
+  ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_fully, color = borough)) +
+  geom_point()
+```
+
+Booster:
+```{r, echo=FALSE}
+joined_dataset_poverty %>% 
+  ggplot(aes(x = prop_below_pov_level_18_and_over, y = prop_booster, color = borough)) +
+  geom_point()
+```
+
+Zipcode and variable: 
+```{r, echo=FALSE}
+joined_dataset_poverty %>% 
+  ggplot(aes(x = prop_below_pov_level_18_and_over, y = borough, color = borough)) +
+  geom_point()
 ```
 
 
