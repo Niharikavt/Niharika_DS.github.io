@@ -239,7 +239,8 @@ Plot 2a shows the proportion of fully vaccinated individuals by median income in
 
 #GGPLOT of Vaccination combined median income and non family median income by borough
 
-income_zip_clean %>%
+fullyinc_plotly=
+  income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Fully_prop, color=borough), alpha = 0.5)+
   labs(
@@ -247,7 +248,7 @@ income_zip_clean %>%
     x = "Median Household Income", 
     y = "Proportion Vaccinated (Count_Fully_Prop)")
 
-
+ggplotly(fullyinc_plotly)
 ```
 
 #### Additional/Boosted Individuals by Median Household Income and Boroughs
@@ -256,6 +257,7 @@ Plot 2b shows the proportion of boosted individuals by median income in each zip
 
 ```{r,echo=FALSE}
 
+boostedinc_plotly =
 income_zip_clean %>%
     ggplot() +
     geom_point(aes(x = income_average, y=Count_Additional_prop, color=borough), alpha = 0.5)+
@@ -264,6 +266,7 @@ income_zip_clean %>%
     x = "Median Household Income ", 
     y = "Proportion Boosted (Count_Additional_Prop)")
 
+ggplotly(boostedinc_plotly)
 
 ```
 
