@@ -23,7 +23,13 @@ Given these reports, we used citywide data from 90 days after individuals above 
 
 ### *Related Work*
 
+The following articles motivated this problems and provided the inspiration for this project: [Socioeconomic factors explain why some New York ZIP codes were hit hardest by COVID-19](https://www.savi.org/2020/06/24/socioeconomic-factors-explain-why-some-new-york-zip-codes-were-hit-hardest-by-covid-19/ )
+ 
+
 The `ggplot function` in R combined with the [New York City COVID-19 geographic mapping](https://www.nyc.gov/site/doh/covid/covid-19-data.page) found here was the inspiration for us to further evaluate the trends in vaccine and booster distribution across New York City based on the available zip codes.
+
+
+
 
 ## **Initial Questions**
 Q1. What socio-demographic and geographic factors make a neighborhood vulnerable with respect to COVID-19 vaccination and boosters.
@@ -557,6 +563,13 @@ Future analyses can examine factors that may drive lower booster rates among com
 5. Explore other psychosocial variables (e.g. vaccine attitudes, political affiliation, health literacy) to understand differences across boroughs and neighborhoods. 
 
 6. Investigate how vaccination trends differ among the pediatric population compared to adults.
+
+#### **References:**
+1. [Carrión, D., Colicino, E., Pedretti, N.F. et al. Neighborhood-level disparities and subway utilization during the COVID-19 pandemic in New York City. Nat Commun 12, 3692 (2021).](https://doi.org/10.1038/s41467-021-24088-7)
+
+2. [Williams N, Tutrow H, Pina P, Belli HM, Ogedegbe G, Schoenthaler A. Assessment of Racial and Ethnic Disparities in Access to COVID-19 Vaccination Sites in Brooklyn, New York. JAMA Netw Open. 2021 Jun 1;4(6):e2113937. doi: 10.1001/jamanetworkopen.2021.13937. PMID: 34143195; PMCID: PMC8214153.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8214153/)
+
+3. [Magesh S, John D, Li WT, et al. Disparities in COVID-19 Outcomes by Race, Ethnicity, and Socioeconomic Status: A Systematic Review and Meta-analysis. JAMA Netw Open. 2021;4(11):e2134147. doi:10.1001/jamanetworkopen.2021.34147](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2785980)
 
 
 
