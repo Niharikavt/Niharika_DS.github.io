@@ -179,7 +179,11 @@ ggplot(cleaned_edu_booster_dataset) +
 
 ```
 
-### **2. The Median Income vs Vaccination and Booster Coverage**
+### **2. Median Income**
+We then used a median income dataset from the 2020 US census to understand the relationship between median income and full vaccination or booster status. In these graphs each dot represents a zip code region. The proportion of individuals with a particular vaccine status (y-axis) is plotted against the median income (x-axis). Each color indicates the borough.  
+
+Generally, we note baseline differences in median income across boroughs with the neighborhoods in the Bronx on the lowest end of median income, and neighborhoods in Manhattan on the highest end of median income. 
+
 
 ```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
@@ -223,6 +227,8 @@ str(income_zip_clean)
 
 #### Fully Vaccinated Individuals by Median Household Income and Boroughs
 
+Plot 2a shows the proportion of fully vaccinated individuals by median income in each zip code region (colors represent boroughs). We observe that neighborhoods with the highest median incomes tend to have higher proportions of fully vaccinated individuals, and indeed higher proportions of individuals who received more than one round of the COVID Vaccine.
+
 ```{r,echo=FALSE}
 
 #GGPLOT of Vaccination combined median income and non family median income by borough
@@ -238,7 +244,9 @@ income_zip_clean %>%
 
 ```
 
-#### Additional/Booster Vaccinated Individuals by Median Household Income and Boroughs
+#### Additional/Boosted Individuals by Median Household Income and Boroughs
+
+Plot 2b shows the proportion of boosted individuals by median income in each zip code region (colors represent boroughs) after 90 days of boosters being approved for 18+. In this graph, possible associations between median income and the proportion boosted become even more pronounced; higher median income appears associated with a higher proportion of the population who received the booster. 
 
 ```{r,echo=FALSE}
 
@@ -253,7 +261,7 @@ income_zip_clean %>%
 
 ```
 
-### **3. Proportion of Individuals Below Poverty Level vs Vaccination and Booster Coverage**
+### **3. Poverty Level**
 
 ```{r, echo=FALSE}
 data <- read.csv("data/poverty_status.csv", skip = 1) %>%
