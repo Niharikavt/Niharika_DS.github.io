@@ -20,18 +20,18 @@ h2.author{
 #### By Brittany Shea | Erfan Faridmoayer| Niharika Telrandhe| Pooja Desai | Sabah Usmani
 
 ## Motivation
-Throughout the course of the COVID-19 pandemic, vaccine availability played a significant role in reduction of new cases, while reducing symptom severity among people who were infected. With the rise of new variants, the need for booster vaccinations with new COVID strain coverage was evident. 
 
-There were widespread reports of lack of vaccine availability in many areas, especially among those with lower socioeconomic status and limited geographic resource availability. 
+Throughout the course of the COVID-19 pandemic, vaccine availability played a significant role in the reduction of new cases, reducing symptom severity and soon became a requirement for returning to work throughout NYC. With the rise of new variants and return to in-person activities, optional boosters became available.
 
-Given these reports, we wanted to explore the following -
+Throughout the pandemic, there were reports of a lack of vaccine availability in many areas of NYC, especially among those of lower socioeconomic status and limited geographic resource availability.
 
-1. Factors that make neighborhoods in NYC vulnerable.
-2. Trends in vaccination - how people are vaccinated - fully (FDA approved primary series) , partially( 1-dose of FDA approved primary series)  or with booster (1 complete FDA-approved primary series + additional boosters).
-3. How many people are actually getting vaccinated?
-COVID-19 vaccination and booster distribution by zip codes and boroughs in NYC as of 2022.
-4. Disparities in vaccine distribution with respect to geographic location, poverty status, education attainment and median income.
-5. Sociodemographic trends in individuals receiving complete vaccinations and boosters.
+Given these reports, we used citywide data from 90 days after individuals above 18 years of age could receive boosters to explore:
+
+1. General trends in rates of completed FDA approved primary series vaccinations and boosters.
+
+2. How vaccination and booster rates differed across boroughs. 
+
+3. How vaccination and booster rates differed based on neighborhood sociodemographic factors including : Education, Median Income and Poverty Status.
 
 ## What You'll Find In This Website
 
