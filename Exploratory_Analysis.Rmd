@@ -89,7 +89,7 @@ ggplot(merged_vaccine_data) +
 
 #### We then sought to explore how vaccination and booster trends varied across different demographic characteristics.
 
-### **1.The Education Attainment in NYC by Vaccination Status and Boroughs**
+### **1. The Education Attainment in NYC by Vaccination Status and Boroughs**
 
 ```{r, include=FALSE}
 cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
