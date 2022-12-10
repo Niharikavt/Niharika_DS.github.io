@@ -29,13 +29,22 @@ scale_fill_discrete = scale_fill_viridis_d
 
 ```
 
-## **1. The Vaccination Coverage in NYC by Zipcode and Boroughs**
+## **General Vaccine Data in NYC by Zipcode and Boroughs**
+
+We began with a preliminary data exploration of the proportion of individuals who  were fully vaccinated and received boosters across different zipcodes in each borough by 3.09.22 (90 days after the booster approval).
 
 ```{r, include=FALSE}
 merged_vaccine_data = read_csv(file="./data/merged_vaccine_data.csv")
 ```
 
 ### Fully Vaccinated Individuals by Zipcode and Boroughs:
+
+Fully Vaccinated: The graph below shows the proportion of people fully vaccinated (y-axis) in each zipcode (x-axis). The colors indicate the borough. From this graph we note a few observations:
+
+1. In several neighborhoods the proportion of individuals vaccinated exceeds 1 (the blue line, which represents 100% of the population being completely vaccinated). This indicates that within those neighborhoods individuals received the primary vaccination series more than once.
+
+2. While each borough ranged in the proportion of individuals vaccinated per neighborhood, it appears no neighborhoods in Staten Island and the Bronx had 100% of the population vaccinated. By contrast, in several neighborhoods across Manhattan and Brooklyn, individuals were fully vaccinated more than once.
+
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
@@ -56,6 +65,11 @@ ggplot(merged_vaccine_data) +
 ```
 
 ### Additional/Booster Vaccinated Individuals by Zipcode and Boroughs:
+
+Boosted: The graph below shows the proportion of people fully boosted (y-axis) in each zip code (x-axis) with colors indicating the borough. This data was collected as of 3.09.22, 90 days after the booster was approved for individuals 18+.
+
+From this graph, it is interesting to note that the proportion of individuals who received a vaccine across all boroughs ranged from 0-0.75. As before, neighborhoods in Staten Island and the Bronx had a fewer proportion of individuals who received the booster.
+
 ```{r, echo=FALSE}
 ggplot(merged_vaccine_data) +
   aes(
@@ -74,7 +88,9 @@ ggplot(merged_vaccine_data) +
   ) + theme_minimal() + geom_hline(yintercept=1, linetype="solid",  color = "navy", size=0.5)
 ```
 
-## **2. The Education Attainment in NYC by Vaccination Status and Boroughs**
+## *We then sought to explore how vaccination and booster trends varied across different demographic characteristics.*
+
+## **1.The Education Attainment in NYC by Vaccination Status and Boroughs**
 ```{r, include=FALSE}
 cleaned_edu_booster_dataset = read_csv(file="./data/cleaned_edu_booster_dataset.csv")
 ```
@@ -144,7 +160,7 @@ ggplot(cleaned_edu_booster_dataset) +
 
 ```
 
-## **3. The Median Income vs Vaccination and Booster Coverage**
+## **2. The Median Income vs Vaccination and Booster Coverage**
 
 ```{r income_data_preprocessing, paged.print=TRUE,include=FALSE}
 #Loading income data 
@@ -216,7 +232,7 @@ income_zip_clean %>%
 
 ```
 
-### **4. Poverty Status vs Vaccination and Booster Coverage**
+### **3. Poverty Status vs Vaccination and Booster Coverage**
 
 ```{r, echo=FALSE}
 data <- read.csv("data/poverty_status.csv", skip = 1) %>%
